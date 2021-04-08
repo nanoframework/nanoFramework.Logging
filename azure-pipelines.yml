@@ -1,0 +1,156 @@
+trigger:
+  branches:
+    include: [master, develop, "release-*" ]
+  paths:
+    exclude: ["*.md", .gitignore]
+  tags:
+    include: ["v*"]
+
+# PR always trigger build
+
+# add nf-tools repo to resources (for Azure Pipelines templates)
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: nanoframework/nf-tools
+      endpoint: nanoframework
+
+pool:
+  vmImage: 'VS2017-Win2016'
+
+variables:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  nugetPackageName: 'nanoFramework.Logging'
+  repoName: 'nanoFramework.Logging'
+
+steps:
+
+# step from template @ nf-tools repo
+# build steps only
+- template: azure-pipelines-templates/class-lib-build-only.yml@templates  
+  parameters:
+    sonarCloudProject: 'nanoframework_nanoFramework.Logging'
+
+# package steps
+- template: azure-pipelines-templates/class-lib-package.yml@templates  
+  parameters:
+    nugetPackageName: 'nanoFramework.Logging'
+
+- template: azure-pipelines-templates/class-lib-package.yml@templates  
+  parameters:
+    nugetPackageName: 'nanoFramework.Logging.Serial'
+
+- template: azure-pipelines-templates/class-lib-package.yml@templates  
+  parameters:
+    nugetPackageName: 'nanoFramework.Logging.Stream'
+
+- template: azure-pipelines-templates/class-lib-publish.yml@templates  
+
+# need to push remaining packages to NuGet individually because the template above can only push one package (happens on tag builds for any branch)
+- task: NuGetCommand@2
+  inputs:
+    command: push
+    nuGetFeedType: external
+    allowPackageConflicts: true
+    packagesToPush: 
+      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Serial.$(MY_NUGET_VERSION).nupkg
+      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Serial.$(MY_NUGET_VERSION).snupkg
+    publishFeedCredentials: 'AzureArtifacts-$(System.TeamProject)'
+    includeSymbols: true
+  condition: and( succeeded(), ne( variables['StartReleaseCandidate'], true ) )
+  continueOnError: true
+  displayName: Push "Serial" variant NuGet package to Azure Artifacts
+
+- task: NuGetCommand@2
+  inputs:
+    command: push
+    nuGetFeedType: external
+    allowPackageConflicts: true
+    packagesToPush: 
+      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Stream.$(MY_NUGET_VERSION).nupkg
+      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Stream.$(MY_NUGET_VERSION).snupkg
+    publishFeedCredentials: 'AzureArtifacts-$(System.TeamProject)'
+    includeSymbols: true
+  condition: and( succeeded(), ne( variables['StartReleaseCandidate'], true ) )
+  continueOnError: true
+  displayName: Push "Stream" variant NuGet package to Azure Artifacts
+
+- task: NuGetCommand@2
+  inputs:
+    command: push
+    nuGetFeedType: external
+    allowPackageConflicts: true
+    packagesToPush: 
+      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Serial.$(MY_NUGET_VERSION).nupkg
+      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Serial.$(MY_NUGET_VERSION).snupkg
+    publishFeedCredentials: 'NuGet-$(System.TeamProject)'
+    includeSymbols: true
+  condition: and( succeeded(), ne(variables['Build.Reason'], 'PullRequest'), ne( variables['StartReleaseCandidate'], true ) )
+  continueOnError: true
+  displayName: Push "Serial" variant NuGet package to NuGet
+
+- task: NuGetCommand@2
+  inputs:
+    command: push
+    nuGetFeedType: external
+    allowPackageConflicts: true
+    packagesToPush: 
+      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Stream.$(MY_NUGET_VERSION).nupkg
+      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Stream.$(MY_NUGET_VERSION).snupkg
+    publishFeedCredentials: 'NuGet-$(System.TeamProject)'
+    includeSymbols: true
+  condition: and( succeeded(), ne(variables['Build.Reason'], 'PullRequest'), ne( variables['StartReleaseCandidate'], true ) )
+  continueOnError: true
+  displayName: Push "Stream" variant NuGet package to NuGet
+
+# create or update GitHub release
+- task: GitHubReleasePublish@1
+  inputs:
+    githubEndpoint: 'nanoframework'
+    githubOwner: 'nanoframework'
+    githubRepositoryName: $(repoName)
+    githubTag: v$(MY_NUGET_VERSION)
+    githubReleaseTitle: '$(nugetPackageName) Library v$(MY_NUGET_VERSION)'
+    githubReleaseNotes: 'Check the [changelog]($(Build.Repository.Uri)/blob/$(Build.SourceBranchName)/CHANGELOG.md).<br><br><h4>Install from NuGet</h4><br>The following NuGet packages are available for download from this release:<br>:package: [.NET](https://www.nuget.org/packages/$(nugetPackageName)/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION).<br>:package: [.NET (Serial API only)](https://www.nuget.org/packages/nanoFramework.Logging.Serial/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)<br>:package: [.NET (server API only)](https://www.nuget.org/packages/nanoFramework.Logging.Server/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)'
+    githubTargetCommitsh: $(Build.SourceVersion)
+    githubReleaseDraft: false
+    githubReleasePrerelease: true
+    githubReuseDraftOnly: false
+    githubReuseRelease: true
+    githubEditRelease: true
+    githubDeleteEmptyTag: true
+    githubReleaseAsset: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+  condition: and( succeeded(), ne(variables['Build.Reason'], 'PullRequest'), not( startsWith(variables['Build.SourceBranch'], 'refs/tags/v') ), ne( variables['StartReleaseCandidate'], true ) )
+  displayName: Create/Update GitHub PREVIEW release 
+
+# create or update GitHub release ON tags from release or master branches
+- task: GitHubReleasePublish@1
+  inputs:
+    githubEndpoint: 'nanoframework'
+    githubOwner: 'nanoframework'
+    githubRepositoryName: $(repoName)
+    githubTag: v$(MY_NUGET_VERSION)
+    githubReleaseTitle: '$(nugetPackageName) Library v$(MY_NUGET_VERSION)'
+    githubReleaseNotes: 'Check the [changelog]($(Build.Repository.Uri)/blob/$(Build.SourceBranchName)/CHANGELOG.md).<br><br><h4>Install from NuGet</h4><br>The following NuGet packages are available for download from this release:<br>:package: [.NET](https://www.nuget.org/packages/$(nugetPackageName)/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION).<br>:package: [.NET (Stream API only)](https://www.nuget.org/packages/nanoFramework.Logging.Stream/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)<br>:package: [.NET (server API only)](https://www.nuget.org/packages/nanoFramework.Logging.Server/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)'
+    githubTargetCommitsh: $(Build.SourceVersion)
+    githubReleaseDraft: false
+    githubReleasePrerelease: false
+    githubReuseDraftOnly: false
+    githubReuseRelease: true
+    githubEditRelease: true
+    githubDeleteEmptyTag: true
+    githubReleaseAsset: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+  condition: and( succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'), not(contains(variables['Build.SourceBranch'], 'preview') ), ne( variables['StartReleaseCandidate'], true ) )
+  displayName: Create/Update GitHub stable release
+
+# step from template @ nf-tools repo
+# report error
+- template: azure-pipelines-templates/discord-webhook-task.yml@templates  
+  parameters:
+    status: 'failure'
+    webhookUrl: '$(DiscordWebhook)'
+    message: ''

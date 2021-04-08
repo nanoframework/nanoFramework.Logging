@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>nanoFramework.Logging</id>
+    <version>$version$</version>
+    <title>nanoFramework.Logging</title>
+    <authors>nanoFramework project contributors</authors>
+    <owners>nanoFramework project contributors</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">Apache-2.0</license>
+    <releaseNotes>
+    </releaseNotes>
+    <developmentDependency>false</developmentDependency>
+    <projectUrl>https://github.com/nanoframework/nanoFramework.Logging</projectUrl>
+    <iconUrl>https://secure.gravatar.com/avatar/97d0e092247f0716db6d4b47b7d1d1ad</iconUrl>
+    <repository type="git" url="https://github.com/nanoframework/nanoFramework.Logging" commit="$commit$" />
+    <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
+    <description>
+      This package includes the nanoFramework.Logging assembly for nanoFramework C# projects.
+      .
+There are also two other packages with just the Serial Logging and just the Stream Logging.
+      These are meant to be used when you want to use those possibilities.
+    </description>
+    <summary>nanoFramework.Logging assembly for nanoFramework C# projects</summary>
+    <tags>nanoFramework C# csharp netmf netnf nanoFramework.Logging</tags>
+    <dependencies>
+      <dependency id="nanoFramework.CoreLibrary" version="1.10.3-preview.7" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="nanoFramework.Logging\bin\Release\nanoFramework.Logging.dll" target="lib\nanoFramework.Logging.dll" />
+    <file src="nanoFramework.Logging\bin\Release\nanoFramework.Logging.pdb" target="lib\nanoFramework.Logging.pdb" />
+    <file src="nanoFramework.Logging\bin\Release\nanoFramework.Logging.pdbx" target="lib\nanoFramework.Logging.pdbx" />
+    <file src="nanoFramework.Logging\bin\Release\nanoFramework.Logging.pe" target="lib\nanoFramework.Logging.pe" />
+    <file src="nanoFramework.Logging\bin\Release\nanoFramework.Logging.xml" target="lib\nanoFramework.Logging.xml" />
+    <!-- readme -->
+    <file src="readme.txt" target="readme.txt" />
+  </files>
+</package>
