@@ -46,7 +46,7 @@ namespace nanoFramework.Logging.Serial
         {
             if (logLevel >= MinLogLevel)
             {
-                string msg = exception == null ? state : $"{state} {exception}";
+                string msg = exception == null ? $"{state}\r\n" : $"{state} {exception}\r\n";
                 _outputDataWriter.WriteString(msg);
                 _outputDataWriter.Store();
             }

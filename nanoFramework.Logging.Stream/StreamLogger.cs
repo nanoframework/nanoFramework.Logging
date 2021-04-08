@@ -44,7 +44,7 @@ namespace nanoFramework.Logging.Stream
         {
             if (logLevel >= MinLogLevel)
             {
-                string msg = exception == null ? state : $"{state} {exception}";
+                string msg = exception == null ? $"{state}\r\n" : $"{state} {exception}\r\n";
                 byte[] sampleBuffer = Encoding.UTF8.GetBytes(msg);
                 _stream.Seek(0, SeekOrigin.End);
                _stream.Write(sampleBuffer, 0, sampleBuffer.Length);
