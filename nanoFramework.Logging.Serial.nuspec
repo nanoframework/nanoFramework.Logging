@@ -11,7 +11,7 @@
     <releaseNotes>
     </releaseNotes>
     <developmentDependency>false</developmentDependency>
-    <projectUrl>https://github.com/nanoframework/nanoFramework.nanoFramework.Logging</projectUrl>
+    <projectUrl>https://github.com/nanoframework/.Logging</projectUrl>
     <iconUrl>https://secure.gravatar.com/avatar/97d0e092247f0716db6d4b47b7d1d1ad</iconUrl>
     <icon>images\nf-logo.png</icon>
     <repository type="git" url="https://github.com/nanoframework/nanoFramework.Logging" commit="$commit$" />
