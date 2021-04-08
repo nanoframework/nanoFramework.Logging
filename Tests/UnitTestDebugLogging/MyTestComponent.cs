@@ -11,7 +11,7 @@ namespace UnitTestDebugLogging
 {
     internal class MyTestComponent
     {
-        private ILogger _logger;
+        private readonly ILogger _logger;
 
         public MyTestComponent()
         {

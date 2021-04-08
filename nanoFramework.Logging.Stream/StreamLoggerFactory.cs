@@ -12,10 +12,10 @@ namespace nanoFramework.Logging.Stream
     /// </summary>
     public class StreamLoggerFactory : ILoggerFactory
     {
-        private System.IO.Stream _stream;
+        private readonly System.IO.Stream _stream;
 
         /// <summary>
-        /// Create a new instance of Stream Logger Factory from a stream
+        /// Create a new instance of <see cref="StreamLoggerFactory"/> from a <see cref="Stream"/>.
         /// </summary>
         /// <param name="stream">The stream</param>
         public StreamLoggerFactory(System.IO.Stream stream)

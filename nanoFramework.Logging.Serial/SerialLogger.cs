@@ -3,22 +3,22 @@
 // See LICENSE file in the project root for full license information.
 //
 
-using System;
 using Microsoft.Extensions.Logging;
+using System;
 using Windows.Devices.SerialCommunication;
 using Windows.Storage.Streams;
 
 namespace nanoFramework.Logging.Serial
 {
     /// <summary>
-    /// A logger that prints to the debug console
+    /// A logger that outputs to a <see cref="SerialDevice"/>.
     /// </summary>
     public class SerialLogger : ILogger
     {
         private readonly DataWriter _outputDataWriter;
 
         /// <summary>
-        /// Creates a new instance of the <see cref="DebugLogger"/>
+        /// Creates a new instance of the <see cref="SerialLogger"/>
         /// </summary>
         /// <param name="serialDevice">The serial port to use</param>
         public SerialLogger(ref SerialDevice serialDevice)

@@ -3,8 +3,8 @@
 // See LICENSE file in the project root for full license information.
 //
 
-using System;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace nanoFramework.Logging.Debug
 {

@@ -2,24 +2,24 @@
 // Copyright (c) .NET Foundation and Contributors
 // See LICENSE file in the project root for full license information.
 //
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using System.Text;
-using Microsoft.Extensions.Logging;
 
 namespace nanoFramework.Logging.Stream
 {
     /// <summary>
-    /// A logger that prints to the debug console
+    /// A logger that outputs to a <see cref="Stream"/>.
     /// </summary>
     public class StreamLogger : ILogger, IDisposable
     {
         private System.IO.Stream _stream = null;
-       
+
         /// <summary>
-        /// Creates a new instance of the <see cref="DebugLogger"/>
+        /// Creates a new instance of the <see cref="ILogger"/>
         /// </summary>
-        /// <param name="fileName">fileName</param>
+        /// <param name="stream">Stream to output the log to.</param>
         public StreamLogger(System.IO.Stream stream)
         {
             _stream = stream;
@@ -51,9 +51,7 @@ namespace nanoFramework.Logging.Stream
             }
         }
 
-        /// <summary>
-        /// Dispose properly the stream
-        /// </summary>
+        /// <inheritdoc/>
         public void Dispose()
         {
             if(_stream != null)

@@ -3,8 +3,8 @@
 // See LICENSE file in the project root for full license information.
 //
 
-using System;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace nanoFramework.Logging
 {
@@ -56,6 +56,7 @@ namespace nanoFramework.Logging
         {
             public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception)
             {
+                // nothing to do here
             }
 
             public bool IsEnabled(LogLevel logLevel)

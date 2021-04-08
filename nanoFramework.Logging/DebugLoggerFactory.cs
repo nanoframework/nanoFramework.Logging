@@ -21,6 +21,7 @@ namespace nanoFramework.Logging.Debug
         /// <inheritdoc />
         public void Dispose()
         {
+            // nothing to do here
         }
     }
 }
