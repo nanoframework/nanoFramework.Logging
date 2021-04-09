@@ -5,6 +5,7 @@
 
 using Microsoft.Extensions.Logging;
 using System;
+using System.Reflection;
 using Windows.Devices.SerialCommunication;
 using Windows.Storage.Streams;
 
@@ -21,12 +22,19 @@ namespace nanoFramework.Logging.Serial
         /// Creates a new instance of the <see cref="SerialLogger"/>
         /// </summary>
         /// <param name="serialDevice">The serial port to use</param>
-        public SerialLogger(ref SerialDevice serialDevice)
+        /// <param name="loggerName">The logger name</param>
+        public SerialLogger(ref SerialDevice serialDevice, string loggerName)
         {
             SerialDevice = serialDevice;
+            LoggerName = loggerName;
             _outputDataWriter = new DataWriter(serialDevice.OutputStream);
             MinLogLevel = LogLevel.Debug;
         }
+
+        /// <summary>
+        /// Name of the logger
+        /// </summary>
+        public string LoggerName { get; }
 
         /// <summary>
         /// Name of the serial device
@@ -42,11 +50,19 @@ namespace nanoFramework.Logging.Serial
         public bool IsEnabled(LogLevel logLevel) => logLevel >= MinLogLevel;
 
         /// <inheritdoc />
-        public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception)
+        public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception, MethodInfo format)
         {
             if (logLevel >= MinLogLevel)
             {
-                string msg = exception == null ? $"{state}\r\n" : $"{state} {exception}\r\n";
+                string msg;
+                if (format == null)
+                {
+                    msg = exception == null ? $"{state}\r\n" : $"{state} {exception}\r\n";
+                }
+                else
+                {
+                    msg = $"{(string)format.Invoke(null, new object[] { LoggerName, logLevel, eventId, state, exception })}\r\n";
+                }
                 _outputDataWriter.WriteString(msg);
                 _outputDataWriter.Store();
             }

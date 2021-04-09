@@ -55,7 +55,7 @@ namespace nanoFramework.Logging.Serial
             _serial.StopBits = _stopBits;
             _serial.Handshake = _handshake;
             _serial.DataBits = _dataBits;
-            return new SerialLogger(ref _serial);
+            return new SerialLogger(ref _serial, categoryName);
         }
 
         /// <inheritdoc />

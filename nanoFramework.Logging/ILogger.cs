@@ -4,6 +4,7 @@
 //
 
 using System;
+using System.Reflection;
 
 namespace Microsoft.Extensions.Logging
 {
@@ -20,7 +21,8 @@ namespace Microsoft.Extensions.Logging
         /// <param name="eventId">Id of the event.</param>
         /// <param name="state">The entry to be written.</param>
         /// <param name="exception">The exception related to this entry.</param>
-        void Log(LogLevel logLevel, EventId eventId, string state, Exception exception);
+        /// <param name="format"></param>
+        void Log(LogLevel logLevel, EventId eventId, string state, Exception exception, MethodInfo format);
 
         /// <summary>
         /// Checks if the given <paramref name="logLevel"/> is enabled.

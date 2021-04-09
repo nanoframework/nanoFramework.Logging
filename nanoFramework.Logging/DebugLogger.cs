@@ -5,6 +5,7 @@
 
 using Microsoft.Extensions.Logging;
 using System;
+using System.Reflection;
 
 namespace nanoFramework.Logging.Debug
 {
@@ -16,6 +17,7 @@ namespace nanoFramework.Logging.Debug
         /// <summary>
         /// Creates a new instance of the <see cref="DebugLogger"/>
         /// </summary>
+        /// <param name="loggerName">The logger name</param>
         public DebugLogger(string loggerName)
         {
             LoggerName = loggerName;
@@ -36,11 +38,20 @@ namespace nanoFramework.Logging.Debug
         public bool IsEnabled(LogLevel logLevel) => logLevel >= MinLogLevel;
 
         /// <inheritdoc />
-        public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception)
+        public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception, MethodInfo format)
         {
             if (logLevel >= MinLogLevel)
             {
-                string msg = exception == null ? state : $"{state} {exception}";
+                string msg;
+                if (format == null)
+                {
+                    msg = exception == null ? state : $"{state} {exception}";
+                }
+                else
+                {
+                    msg = (string)format.Invoke(null, new object[] { LoggerName, logLevel, eventId, state, exception });
+                }
+
                 System.Diagnostics.Debug.WriteLine(msg);
             }
         }

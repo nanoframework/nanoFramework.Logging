@@ -4,6 +4,7 @@
 //
 
 using System;
+using System.Reflection;
 
 namespace Microsoft.Extensions.Logging
 {
@@ -12,17 +13,22 @@ namespace Microsoft.Extensions.Logging
     /// </summary>
     public static class LoggerExtensions
     {
+        /// <summary>
+        /// Provide a way to have the message formated
+        /// </summary>
+        public static MethodInfo MessageFormatter { get; set; }
+
         #region Debug
 
-        /// <summary>
-        /// Formats and writes a debug log message.
-        /// </summary>
-        /// <param name="logger">The <see cref="ILogger"/> to write to.</param>
-        /// <param name="eventId">The event id associated with the log.</param>
-        /// <param name="exception">The exception to log.</param>
-        /// <param name="message">Format string of the log message in message template format. Example: <code>"User {User} logged in from {Address}"</code></param>
-        /// <param name="args">An object array that contains zero or more objects to format.</param>
-        /// <example>logger.LogDebug(0, exception, "Error while processing request from {Address}", address)</example>
+            /// <summary>
+            /// Formats and writes a debug log message.
+            /// </summary>
+            /// <param name="logger">The <see cref="ILogger"/> to write to.</param>
+            /// <param name="eventId">The event id associated with the log.</param>
+            /// <param name="exception">The exception to log.</param>
+            /// <param name="message">Format string of the log message in message template format. Example: <code>"User {User} logged in from {Address}"</code></param>
+            /// <param name="args">An object array that contains zero or more objects to format.</param>
+            /// <example>logger.LogDebug(0, exception, "Error while processing request from {Address}", address)</example>
         public static void LogDebug(this ILogger logger, EventId eventId, Exception exception, string message, params object[] args)
         {
             logger.Log(LogLevel.Debug, eventId, exception, message, args);
@@ -346,6 +352,10 @@ namespace Microsoft.Extensions.Logging
             logger.Log(LogLevel.Critical, message, args);
         }
 
+        #endregion
+
+        #region Primitives
+
         /// <summary>
         /// Formats and writes a log message at the specified log level.
         /// </summary>
@@ -400,7 +410,7 @@ namespace Microsoft.Extensions.Logging
                 throw new ArgumentNullException(nameof(logger));
             }
 
-            logger.Log(logLevel, eventId, string.Format(message, args), exception);
+            logger.Log(logLevel, eventId, string.Format(message, args), exception, MessageFormatter);
         }
 
         #endregion
