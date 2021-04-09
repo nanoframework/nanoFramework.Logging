@@ -56,84 +56,28 @@ steps:
 - task: NuGetCommand@2
   condition: and( succeeded(), ne( variables['StartReleaseCandidate'], true ) )
   continueOnError: true
-  displayName: Push "Serial" variant NuGet package to Azure Artifacts
+  displayName: Push NuGet package to Azure Artifacts
   inputs:
     command: push
     nuGetFeedType: external
     allowPackageConflicts: true
     packagesToPush: 
-      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Serial.$(MY_NUGET_VERSION).nupkg
-      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Serial.$(MY_NUGET_VERSION).snupkg
+      $(Build.ArtifactStagingDirectory)/*.nupkg
+      $(Build.ArtifactStagingDirectory)/*.snupkg
     publishFeedCredentials: 'AzureArtifacts-$(System.TeamProject)'
     includeSymbols: true
 
 - task: NuGetCommand@2
   condition: and( succeeded(), ne( variables['StartReleaseCandidate'], true ) )
   continueOnError: true
-  displayName: Push "Stream" variant NuGet package to Azure Artifacts
+  displayName: Push NuGet packages to Nuget
   inputs:
     command: push
     nuGetFeedType: external
     allowPackageConflicts: true
     packagesToPush: 
-      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Stream.$(MY_NUGET_VERSION).nupkg
-      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Stream.$(MY_NUGET_VERSION).snupkg
-    publishFeedCredentials: 'AzureArtifacts-$(System.TeamProject)'
-    includeSymbols: true
-
-- task: NuGetCommand@2
-  condition: and( succeeded(), ne(variables['Build.Reason'], 'PullRequest'), ne( variables['StartReleaseCandidate'], true ) )
-  continueOnError: true
-  displayName: Push base NuGet package to Azure Artifacts
-  inputs:
-    command: push
-    nuGetFeedType: external
-    allowPackageConflicts: true
-    packagesToPush: 
-      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.$(MY_NUGET_VERSION).nupkg
-      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.$(MY_NUGET_VERSION).snupkg
-    publishFeedCredentials: 'AzureArtifacts-$(System.TeamProject)'
-    includeSymbols: true
-
-- task: NuGetCommand@2
-  condition: and( succeeded(), ne( variables['StartReleaseCandidate'], true ) )
-  continueOnError: true
-  displayName: Push "Serial" variant NuGet package to Azure Artifacts
-  inputs:
-    command: push
-    nuGetFeedType: external
-    allowPackageConflicts: true
-    packagesToPush: 
-      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Serial.$(MY_NUGET_VERSION).nupkg
-      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Serial.$(MY_NUGET_VERSION).snupkg
-    publishFeedCredentials: 'NuGet-$(System.TeamProject)'
-    includeSymbols: true
-
-- task: NuGetCommand@2
-  condition: and( succeeded(), ne(variables['Build.Reason'], 'PullRequest'), ne( variables['StartReleaseCandidate'], true ) )
-  continueOnError: true
-  displayName: Push "Stream" variant NuGet package to NuGet
-  inputs:
-    command: push
-    nuGetFeedType: external
-    allowPackageConflicts: true
-    packagesToPush: 
-      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Stream.$(MY_NUGET_VERSION).nupkg
-      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.Stream.$(MY_NUGET_VERSION).snupkg
-    publishFeedCredentials: 'NuGet-$(System.TeamProject)'
-    includeSymbols: true
-
-- task: NuGetCommand@2
-  condition: and( succeeded(), ne(variables['Build.Reason'], 'PullRequest'), ne( variables['StartReleaseCandidate'], true ) )
-  continueOnError: true
-  displayName: Push base NuGet package to NuGet
-  inputs:
-    command: push
-    nuGetFeedType: external
-    allowPackageConflicts: true
-    packagesToPush: 
-      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.$(MY_NUGET_VERSION).nupkg
-      $(Build.ArtifactStagingDirectory)/nanoFramework.Logging.$(MY_NUGET_VERSION).snupkg
+      $(Build.ArtifactStagingDirectory)/*.nupkg
+      $(Build.ArtifactStagingDirectory)/*.snupkg
     publishFeedCredentials: 'NuGet-$(System.TeamProject)'
     includeSymbols: true
 
