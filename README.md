@@ -174,6 +174,68 @@ _logger.LogTrace("This won't be displayed, only critical will be");
 _logger.LogCritical("Critical message will be displayed");
 ```
 
+### Create your own formatting
+
+You can use a custom formatter which will give you the name of the logger, the log level, the event ID, the message itself and a potential exception. The function definition should follow the following pattern:
+
+```csharp
+public interface IMessageFormatter
+{     
+    string MessageFormatter(string className, LogLevel logLevel, EventId eventId, string state, Exception exception);
+}
+```
+
+**Important**: this function will be called directly, without instantiating the class it is part of. So make sure either this function is a static, either it's part of the class using the logger. The static option always works. The interface is given for convenience and to give the format.
+
+To setup the formatting, just use the following line. The type of the class containing the function and the exact name of the function are required.
+
+```csharp
+LoggerExtensions.MessageFormatter = typeof(MyFormatter).GetType().GetMethod("MessageFormatterStatic");
+
+public class MyFormatter
+{        
+    public string MessageFormatterStatic(string className, LogLevel logLevel, EventId eventId, string state, Exception exception)
+    {
+        string logstr = string.Empty;
+        switch (logLevel)
+        {
+            case LogLevel.Trace:
+                logstr = "TRACE: ";
+                break;
+            case LogLevel.Debug:
+                logstr = "I love debug: ";
+                break;
+            case LogLevel.Warning:
+                logstr = "WARNING: ";
+                break;
+            case LogLevel.Error:
+                logstr = "ERROR: ";
+                break;
+            case LogLevel.Critical:
+                logstr = "CRITICAL:";
+                break;
+            case LogLevel.None:
+            case LogLevel.Information:
+            default:
+                break;
+        }
+
+        string eventstr = eventId.Id != 0 ? $" Event ID: {eventId}, " : string.Empty;
+        string msg = $"[{className}] {eventstr}{logstr} {state}";
+        if (exception != null)
+        {
+            msg += $" {exception}";
+        }
+
+        return msg;
+    }
+}
+```
+
+You are free to use anything you'd like and format as you like the message.
+
+Note: It is **not** necessary to add a \r\n at the end, this is done by each logger.
+
 ## Code of Conduct
 
 This project has adopted the code of conduct defined by the Contributor Covenant to clarify expected behavior in our community.

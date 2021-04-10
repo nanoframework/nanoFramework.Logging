@@ -258,3 +258,6 @@ paket-files/
 
 #VS Code
 .vscode
+
+#Sonar Lint
+.sonarlint
