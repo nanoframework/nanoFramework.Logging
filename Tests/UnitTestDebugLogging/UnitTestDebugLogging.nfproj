@@ -29,6 +29,7 @@
   <ItemGroup>
     <Compile Include="DebugTest.cs" />
     <Compile Include="EventIdTests.cs" />
+    <Compile Include="FormattingTest.cs" />
     <Compile Include="MemoryStreamTests.cs" />
     <Compile Include="MyTestComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

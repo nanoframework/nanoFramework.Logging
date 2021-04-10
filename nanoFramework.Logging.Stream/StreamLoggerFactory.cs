@@ -40,7 +40,7 @@ namespace nanoFramework.Logging.Stream
                 throw new IOException();
             }
 
-            return new StreamLogger(_stream);
+            return new StreamLogger(_stream, categoryName);
         }
 
         /// <inheritdoc />

@@ -5,6 +5,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace nanoFramework.Logging.Stream
@@ -12,19 +13,26 @@ namespace nanoFramework.Logging.Stream
     /// <summary>
     /// A logger that outputs to a <see cref="Stream"/>.
     /// </summary>
-    public class StreamLogger : ILogger, IDisposable
+    public class StreamLogger : ILogger
     {
-        private System.IO.Stream _stream = null;
+        private readonly System.IO.Stream _stream = null;
 
         /// <summary>
         /// Creates a new instance of the <see cref="ILogger"/>
         /// </summary>
         /// <param name="stream">Stream to output the log to.</param>
-        public StreamLogger(System.IO.Stream stream)
+        /// <param name="loggerName">The logger name</param>
+        public StreamLogger(System.IO.Stream stream, string loggerName)
         {
             _stream = stream;
+            LoggerName = loggerName;
             MinLogLevel = LogLevel.Debug;
         }
+
+        /// <summary>
+        /// Name of the logger
+        /// </summary>
+        public string LoggerName { get; }
 
         /// <summary>
         /// Name of the logger
@@ -40,24 +48,23 @@ namespace nanoFramework.Logging.Stream
         public bool IsEnabled(LogLevel logLevel) => logLevel >= MinLogLevel;
 
         /// <inheritdoc />
-        public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception)
+        public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception, MethodInfo format)
         {
             if (logLevel >= MinLogLevel)
             {
-                string msg = exception == null ? $"{state}\r\n" : $"{state} {exception}\r\n";
-                byte[] sampleBuffer = Encoding.UTF8.GetBytes(msg);
+                string msgStream;
+                if (format == null)
+                {
+                    msgStream = exception == null ? $"{state}\r\n" : $"{state} {exception}\r\n";
+                }
+                else
+                {
+                    msgStream = $"{(string)format.Invoke(null, new object[] { LoggerName, logLevel, eventId, state, exception })}\r\n";
+                }
+                
+                byte[] sampleBuffer = Encoding.UTF8.GetBytes(msgStream);
                 _stream.Seek(0, SeekOrigin.End);
                _stream.Write(sampleBuffer, 0, sampleBuffer.Length);
-            }
-        }
-
-        /// <inheritdoc/>
-        public void Dispose()
-        {
-            if(_stream != null)
-            {
-                _stream.Dispose();
-                _stream = null;
             }
         }
     }
