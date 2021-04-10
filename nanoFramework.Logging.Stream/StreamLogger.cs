@@ -52,17 +52,17 @@ namespace nanoFramework.Logging.Stream
         {
             if (logLevel >= MinLogLevel)
             {
-                string msg;
+                string msgStream;
                 if (format == null)
                 {
-                    msg = exception == null ? $"{state}\r\n" : $"{state} {exception}\r\n";
+                    msgStream = exception == null ? $"{state}\r\n" : $"{state} {exception}\r\n";
                 }
                 else
                 {
-                    msg = $"{(string)format.Invoke(null, new object[] { LoggerName, logLevel, eventId, state, exception })}\r\n";
+                    msgStream = $"{(string)format.Invoke(null, new object[] { LoggerName, logLevel, eventId, state, exception })}\r\n";
                 }
                 
-                byte[] sampleBuffer = Encoding.UTF8.GetBytes(msg);
+                byte[] sampleBuffer = Encoding.UTF8.GetBytes(msgStream);
                 _stream.Seek(0, SeekOrigin.End);
                _stream.Write(sampleBuffer, 0, sampleBuffer.Length);
             }

@@ -54,16 +54,17 @@ namespace nanoFramework.Logging.Serial
         {
             if (logLevel >= MinLogLevel)
             {
-                string msg;
+                string msgSerial;
                 if (format == null)
                 {
-                    msg = exception == null ? $"{state}\r\n" : $"{state} {exception}\r\n";
+                    msgSerial = exception == null ? $"{state}\r\n" : $"{state} {exception}\r\n";
                 }
                 else
                 {
-                    msg = $"{(string)format.Invoke(null, new object[] { LoggerName, logLevel, eventId, state, exception })}\r\n";
+                    msgSerial = $"{(string)format.Invoke(null, new object[] { LoggerName, logLevel, eventId, state, exception })}\r\n";
                 }
-                _outputDataWriter.WriteString(msg);
+
+                _outputDataWriter.WriteString(msgSerial);
                 _outputDataWriter.Store();
             }
         }
