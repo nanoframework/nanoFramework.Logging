@@ -52,7 +52,8 @@ namespace nanoFramework.Logging.Debug
                     msg = (string)format.Invoke(null, new object[] { LoggerName, logLevel, eventId, state, exception });
                 }
 
-                System.Diagnostics.Debug.WriteLine(msg);
+                // need to use Console.WriteLine to have this working on both Debug and Release flavours
+                Console.WriteLine(msg); 
             }
         }
     }
