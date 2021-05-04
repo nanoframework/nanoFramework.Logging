@@ -52,7 +52,7 @@ namespace nanoFramework.Logging.Debug
                     msg = (string)format.Invoke(null, new object[] { LoggerName, logLevel, eventId, state, exception });
                 }
 
-                System.Diagnostics.Debug.WriteLine(msg);
+                Console.WriteLine(msg);  // nanoFramework.Core allows this library to use the internal System classes.  Console.WriteLog works when we build this library in both Debug and Release modes.
             }
         }
     }
