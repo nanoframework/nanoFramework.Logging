@@ -29,11 +29,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="nanoFramework.System.Text, Version=1.1.1.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\packages\nanoFramework.System.Text.1.1.1-preview.45\lib\nanoFramework.System.Text.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.System.Text.1.1.1-preview.46\lib\nanoFramework.System.Text.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.IO.FileSystem, Version=1.0.1.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\packages\nanoFramework.System.IO.FileSystem.1.0.1-preview.2\lib\System.IO.FileSystem.dll</HintPath>
+      <HintPath>..\packages\nanoFramework.System.IO.FileSystem.1.0.1-preview.4\lib\System.IO.FileSystem.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
