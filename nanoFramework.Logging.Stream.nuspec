@@ -23,7 +23,7 @@ There is also a package with the Serial Logger only and another with the basic D
     <summary>nanoFramework.Logging.Stream assembly (Stream Logger only) for nanoFramework C# projects</summary>
     <tags>nanoFramework C# csharp netmf netnf logging</tags>
     <dependencies>
-      <dependency id="nanoFramework.CoreLibrary" version="1.10.4-preview.6" />
+      <dependency id="nanoFramework.CoreLibrary" version="1.10.4-preview.11" />
       <dependency id="nanoFramework.System.Text" version="1.1.1-preview.48" />
       <dependency id="nanoFramework.System.IO.FileSystem" version="1.0.1-preview.10" />
       <dependency id="nanoFramework.Logging" version="$version$" />

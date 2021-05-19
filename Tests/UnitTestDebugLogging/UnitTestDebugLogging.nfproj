@@ -40,15 +40,15 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib, Version=1.10.4.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\..\packages\nanoFramework.CoreLibrary.1.10.4-preview.6\lib\mscorlib.dll</HintPath>
+      <HintPath>..\..\packages\nanoFramework.CoreLibrary.1.10.4-preview.11\lib\mscorlib.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nanoFramework.Hardware.Esp32, Version=1.3.3.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\..\packages\nanoFramework.Hardware.Esp32.1.3.3-preview.12\lib\nanoFramework.Hardware.Esp32.dll</HintPath>
+      <HintPath>..\..\packages\nanoFramework.Hardware.Esp32.1.3.3-preview.13\lib\nanoFramework.Hardware.Esp32.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nanoFramework.Runtime.Events, Version=1.9.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\..\packages\nanoFramework.Runtime.Events.1.9.0-preview.24\lib\nanoFramework.Runtime.Events.dll</HintPath>
+      <HintPath>..\..\packages\nanoFramework.Runtime.Events.1.9.0-preview.25\lib\nanoFramework.Runtime.Events.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="nanoFramework.System.Text, Version=1.1.1.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
@@ -68,7 +68,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Windows.Devices.SerialCommunication, Version=1.3.4.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\..\packages\nanoFramework.Windows.Devices.SerialCommunication.1.3.4-preview.81\lib\Windows.Devices.SerialCommunication.dll</HintPath>
+      <HintPath>..\..\packages\nanoFramework.Windows.Devices.SerialCommunication.1.3.4-preview.83\lib\Windows.Devices.SerialCommunication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Windows.Storage.Streams, Version=1.12.2.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
