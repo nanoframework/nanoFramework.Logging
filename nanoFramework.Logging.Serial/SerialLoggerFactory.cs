@@ -4,7 +4,7 @@
 //
 
 using Microsoft.Extensions.Logging;
-using Windows.Devices.SerialCommunication;
+using System.IO.Ports;
 
 namespace nanoFramework.Logging.Serial
 {
@@ -13,13 +13,13 @@ namespace nanoFramework.Logging.Serial
     /// </summary>
     public class SerialLoggerFactory : ILoggerFactory
     {
-        private SerialDevice _serial;
+        private SerialPort _serial;
         private readonly string _comPort;
-        private readonly uint _baudRate;
+        private readonly int _baudRate;
         private readonly ushort _dataBits;
-        private readonly SerialParity _parity;
-        private readonly SerialStopBitCount _stopBits;
-        private readonly SerialHandshake _handshake;
+        private readonly Parity _parity;
+        private readonly StopBits _stopBits;
+        private readonly Handshake _handshake;
 
         /// <summary>
         /// Create a new instance of <see cref="SerialLoggerFactory"/> from a <see cref="SerialDevice"/>.
@@ -32,11 +32,11 @@ namespace nanoFramework.Logging.Serial
         /// <param name="handshake"></param>
         public SerialLoggerFactory(
             string comPort,
-            uint baudRate = 9600,
+            int baudRate = 9600,
             ushort dataBits = 8,
-            SerialParity parity = SerialParity.None,
-            SerialStopBitCount stopBits = SerialStopBitCount.One,
-            SerialHandshake handshake = SerialHandshake.None)
+            Parity parity = Parity.None,
+            StopBits stopBits = StopBits.One,
+            Handshake handshake = Handshake.None)
         {
             _comPort = comPort;
             _baudRate = baudRate;
@@ -49,7 +49,7 @@ namespace nanoFramework.Logging.Serial
         /// <inheritdoc/>
         public ILogger CreateLogger(string categoryName)
         {
-            _serial = SerialDevice.FromId(_comPort);
+            _serial = new SerialPort(_comPort);
             _serial.BaudRate = _baudRate;
             _serial.Parity = _parity;
             _serial.StopBits = _stopBits;
