@@ -5,9 +5,9 @@
 
 using Microsoft.Extensions.Logging;
 using System;
+using System.IO;
+using System.IO.Ports;
 using System.Reflection;
-using Windows.Devices.SerialCommunication;
-using Windows.Storage.Streams;
 
 namespace nanoFramework.Logging.Serial
 {
@@ -16,18 +16,22 @@ namespace nanoFramework.Logging.Serial
     /// </summary>
     public class SerialLogger : ILogger
     {
-        private readonly DataWriter _outputDataWriter;
+        private readonly SerialPort _serialPort;
 
         /// <summary>
         /// Creates a new instance of the <see cref="SerialLogger"/>
         /// </summary>
         /// <param name="serialDevice">The serial port to use</param>
         /// <param name="loggerName">The logger name</param>
-        public SerialLogger(ref SerialDevice serialDevice, string loggerName)
+        public SerialLogger(ref SerialPort serialDevice, string loggerName)
         {
-            SerialDevice = serialDevice;
+            _serialPort = serialDevice;
+            if (!_serialPort.IsOpen)
+            {
+                _serialPort.Open();
+            }
+
             LoggerName = loggerName;
-            _outputDataWriter = new DataWriter(serialDevice.OutputStream);
             MinLogLevel = LogLevel.Debug;
         }
 
@@ -39,7 +43,7 @@ namespace nanoFramework.Logging.Serial
         /// <summary>
         /// Name of the serial device
         /// </summary>
-        public SerialDevice SerialDevice { get; }
+        public SerialPort SerialPort => _serialPort;
 
         /// <summary>
         /// Sets the minimum log level
@@ -64,8 +68,7 @@ namespace nanoFramework.Logging.Serial
                     msgSerial = $"{(string)format.Invoke(null, new object[] { LoggerName, logLevel, eventId, state, exception })}\r\n";
                 }
 
-                _outputDataWriter.WriteString(msgSerial);
-                _outputDataWriter.Store();
+                _serialPort.Write(msgSerial);
             }
         }
     }

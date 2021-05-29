@@ -109,8 +109,8 @@ Note that you can adjust the baud speed and all other elements.
 Or directly using a SerialLogger:
 
 ```csharp
-SerialDevice _serial;
-_serial = SerialDevice.FromId("COM6", 115200);
+SerialPort _serial;
+_serial = new SerialPort("COM6", 115200);
 SerialLogger _logger = new SerialLogger(ref _serial);
 _logger.MinLogLevel = LogLevel.Trace; 
 _logger.LogTrace("This is a trace");
