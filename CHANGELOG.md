@@ -2,7 +2,24 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Logging/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.62...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.66...HEAD)
+
+**Documentation and other chores:**
+
+- Update 3 nuget dependencies [\#30](https://github.com/nanoframework/nanoFramework.Logging/pull/30)
+- Update 1 nuget dependencies [\#29](https://github.com/nanoframework/nanoFramework.Logging/pull/29)
+
+## [v1.0.0-preview.66](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.0-preview.66) (2021-05-29)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.64...v1.0.0-preview.66)
+
+**Implemented enhancements:**
+
+- Migrating to System.IO.Ports [\#28](https://github.com/nanoframework/nanoFramework.Logging/pull/28)
+
+## [v1.0.0-preview.64](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.0-preview.64) (2021-05-27)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.62...v1.0.0-preview.64)
 
 **Documentation and other chores:**
 
