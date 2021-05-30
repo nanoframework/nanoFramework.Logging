@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Logging/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.66...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.68...HEAD)
+
+**Fixed bugs:**
+
+- Fixing nuget reference for Logging.Serial [\#31](https://github.com/nanoframework/nanoFramework.Logging/pull/31)
+
+## [v1.0.0-preview.68](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.0-preview.68) (2021-05-30)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.66...v1.0.0-preview.68)
 
 **Documentation and other chores:**
 
