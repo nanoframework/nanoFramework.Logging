@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Logging/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.72...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.74...HEAD)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.TestFramework from 1.0.122 to 1.0.126 [\#34](https://github.com/nanoframework/nanoFramework.Logging/pull/34)
+
+## [v1.0.0-preview.74](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.0-preview.74) (2021-05-31)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.72...v1.0.0-preview.74)
 
 **Documentation and other chores:**
 
