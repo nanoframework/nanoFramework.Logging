@@ -24,7 +24,7 @@ There are also two other packages with just the Serial Logging and just the Stre
     <summary>nanoFramework.Logging assembly for nanoFramework C# projects</summary>
     <tags>nanoFramework C# csharp netmf netnf nanoFramework.Logging</tags>
     <dependencies>
-      <dependency id="nanoFramework.CoreLibrary" version="1.10.5-preview.4" />
+      <dependency id="nanoFramework.CoreLibrary" version="1.10.5-preview.10" />
     </dependencies>
   </metadata>
   <files>
