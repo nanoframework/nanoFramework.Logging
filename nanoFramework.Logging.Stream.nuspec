@@ -24,7 +24,7 @@ There is also a package with the Serial Logger only and another with the basic D
     <tags>nanoFramework C# csharp netmf netnf logging</tags>
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.10.5-preview.10" />
-      <dependency id="nanoFramework.System.Text" version="1.1.1-preview.57" />
+      <dependency id="nanoFramework.System.Text" version="1.1.1-preview.59" />
       <dependency id="nanoFramework.System.IO.FileSystem" version="1.0.1-preview.24" />
       <dependency id="nanoFramework.Logging" version="$version$" />
     </dependencies>
