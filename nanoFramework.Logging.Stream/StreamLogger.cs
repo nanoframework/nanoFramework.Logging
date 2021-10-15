@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using SysIOStream = System.IO.Stream;
 
 namespace nanoFramework.Logging.Stream
 {
@@ -15,14 +16,14 @@ namespace nanoFramework.Logging.Stream
     /// </summary>
     public class StreamLogger : ILogger
     {
-        private readonly System.IO.Stream _stream = null;
+        private readonly SysIOStream _stream = null;
 
         /// <summary>
         /// Creates a new instance of the <see cref="ILogger"/>
         /// </summary>
         /// <param name="stream">Stream to output the log to.</param>
         /// <param name="loggerName">The logger name</param>
-        public StreamLogger(System.IO.Stream stream, string loggerName)
+        public StreamLogger(SysIOStream stream, string loggerName)
         {
             _stream = stream;
             LoggerName = loggerName;
@@ -37,7 +38,7 @@ namespace nanoFramework.Logging.Stream
         /// <summary>
         /// Name of the logger
         /// </summary>
-        public System.IO.Stream BaseStream { get; }
+        public SysIOStream BaseStream { get; }
 
         /// <summary>
         /// Sets the minimum log level
