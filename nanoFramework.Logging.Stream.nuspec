@@ -25,7 +25,7 @@ There is also a package with the Serial Logger only and another with the basic D
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.10.5" />
       <dependency id="nanoFramework.System.Text" version="1.1.1" />
-      <dependency id="nanoFramework.System.IO.FileSystem" version="1.0.1" />
+      <dependency id="nanoFramework.System.IO.FileSystem" version="1.0.2-preview.8" />
       <dependency id="nanoFramework.Logging" version="$version$" />
     </dependencies>
   </metadata>
