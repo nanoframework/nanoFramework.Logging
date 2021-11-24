@@ -10,18 +10,13 @@
     <license type="file">LICENSE.md</license>
     <releaseNotes>
     </releaseNotes>
+    <readme>docs\README.md</readme>
     <developmentDependency>false</developmentDependency>
-    <projectUrl>https://github.com/nanoframework/.Logging</projectUrl>
-    <iconUrl>https://secure.gravatar.com/avatar/97d0e092247f0716db6d4b47b7d1d1ad</iconUrl>
+    <projectUrl>https://github.com/nanoframework/nanoFramework.Logging</projectUrl>
     <icon>images\nf-logo.png</icon>
     <repository type="git" url="https://github.com/nanoframework/nanoFramework.Logging" commit="$commit$" />
     <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
-    <description>
-      This package includes the nanoFramework.Logging assembly for .NET nanoFramework C# projects.
-There are also two other packages with just the Serial Logging and just the Stream Logging.
-      These are meant to be used when you want to use those possibilities.
-    </description>
-    <summary>nanoFramework.Logging assembly for nanoFramework C# projects</summary>
+    <description>This package includes the nanoFramework.Logging assembly for .NET nanoFramework C# projects.&#10;There are also two other packages with just the Serial Logging and just the Stream Logging.&#10;These are meant to be used when you want to use those possibilities.</description>
     <tags>nanoFramework C# csharp netmf netnf nanoFramework.Logging</tags>
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.10.5" />
@@ -34,7 +29,8 @@ There are also two other packages with just the Serial Logging and just the Stre
     <file src="nanoFramework.Logging\bin\Release\nanoFramework.Logging.pe" target="lib\nanoFramework.Logging.pe" />
     <file src="nanoFramework.Logging\bin\Release\nanoFramework.Logging.xml" target="lib\nanoFramework.Logging.xml" />
     <file src="assets\readme.txt" target="" />
-    <file src="assets\nf-logo.png" target="images\" />
+    <file src="README.md" target="docs\" />
+    <file src="assets\nf-logo.png" target="images" />
     <file src="LICENSE.md" target="" />
   </files>
 </package>
