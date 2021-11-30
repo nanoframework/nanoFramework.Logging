@@ -16,10 +16,12 @@
     <icon>images\nf-logo.png</icon>
     <repository type="git" url="https://github.com/nanoframework/nanoFramework.Logging" commit="$commit$" />
     <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
-    <description>This package includes the nanoFramework.Logging assembly for .NET nanoFramework C# projects.&#10;There are also two other packages with just the Serial Logging and just the Stream Logging.&#10;These are meant to be used when you want to use those possibilities.</description>
+    <description>This package includes the nanoFramework.Logging assembly for .NET nanoFramework C# projects.
+There are also two other packages with just the Serial Logging and just the Stream Logging.
+These are meant to be used when you want to use those possibilities.</description>
     <tags>nanoFramework C# csharp netmf netnf nanoFramework.Logging</tags>
     <dependencies>
-      <dependency id="nanoFramework.CoreLibrary" version="1.10.5" />
+      <dependency id="nanoFramework.CoreLibrary" version="1.11.6-preview.2" />
     </dependencies>
   </metadata>
   <files>
