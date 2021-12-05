@@ -27,7 +27,7 @@ namespace UnitTestDebugLogging
             memoryStream.Read(fsContent, 0, fsContent.Length);
             var fsText = Encoding.UTF8.GetString(fsContent, 0, fsContent.Length);
             Assert.StartsWith("An informative message", fsText);
-            Assert.EndsWith("With exception context System.Exception: Something is not supported", fsText);
+            Assert.EndsWith("With exception context System.Exception: Something is not supported\r\n", fsText);
         }
 
         [Cleanup]

@@ -4,7 +4,7 @@
 //
 
 using Microsoft.Extensions.Logging;
-using Windows.Devices.SerialCommunication;
+using System.IO.Ports;
 
 namespace nanoFramework.Logging.Serial
 {
@@ -13,15 +13,30 @@ namespace nanoFramework.Logging.Serial
     /// </summary>
     public class SerialLoggerFactory : ILoggerFactory
     {
-        private SerialDevice _serial;
-        private string _comPort;
-        private uint _baudRate;
-        private ushort _dataBits;
-        private SerialParity _parity;
-        private SerialStopBitCount _stopBits;
-        private SerialHandshake _handshake;
+        private SerialPort _serial;
+        private readonly string _comPort;
+        private readonly int _baudRate;
+        private readonly ushort _dataBits;
+        private readonly Parity _parity;
+        private readonly StopBits _stopBits;
+        private readonly Handshake _handshake;
 
-        public SerialLoggerFactory(string comPort, uint baudRate = 9600, ushort dataBits = 8, SerialParity parity = SerialParity.None, SerialStopBitCount stopBits = SerialStopBitCount.One, SerialHandshake handshake = SerialHandshake.None)
+        /// <summary>
+        /// Create a new instance of <see cref="SerialLoggerFactory"/> from a <see cref="SerialDevice"/>.
+        /// </summary>
+        /// <param name="comPort"></param>
+        /// <param name="baudRate"></param>
+        /// <param name="dataBits"></param>
+        /// <param name="parity"></param>
+        /// <param name="stopBits"></param>
+        /// <param name="handshake"></param>
+        public SerialLoggerFactory(
+            string comPort,
+            int baudRate = 9600,
+            ushort dataBits = 8,
+            Parity parity = Parity.None,
+            StopBits stopBits = StopBits.One,
+            Handshake handshake = Handshake.None)
         {
             _comPort = comPort;
             _baudRate = baudRate;
@@ -34,13 +49,13 @@ namespace nanoFramework.Logging.Serial
         /// <inheritdoc/>
         public ILogger CreateLogger(string categoryName)
         {
-            _serial = SerialDevice.FromId(_comPort);
+            _serial = new SerialPort(_comPort);
             _serial.BaudRate = _baudRate;
             _serial.Parity = _parity;
             _serial.StopBits = _stopBits;
             _serial.Handshake = _handshake;
             _serial.DataBits = _dataBits;
-            return new SerialLogger(ref _serial);
+            return new SerialLogger(ref _serial, categoryName);
         }
 
         /// <inheritdoc />

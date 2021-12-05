@@ -9,7 +9,7 @@ namespace Microsoft.Extensions.Logging
 {
     /// <summary>
     /// Represents a type used to configure the logging system and create instances of <see cref="ILogger"/> from
-    /// the registered <see cref="ILoggerProvider"/>s.
+    /// the registered <see cref="ILogger"/>s.
     /// </summary>
     public interface ILoggerFactory : IDisposable
     {

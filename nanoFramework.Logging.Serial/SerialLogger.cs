@@ -3,35 +3,47 @@
 // See LICENSE file in the project root for full license information.
 //
 
-using System;
 using Microsoft.Extensions.Logging;
-using Windows.Devices.SerialCommunication;
-using Windows.Storage.Streams;
+using System;
+using System.IO;
+using System.IO.Ports;
+using System.Reflection;
 
 namespace nanoFramework.Logging.Serial
 {
     /// <summary>
-    /// A logger that prints to the debug console
+    /// A logger that outputs to a <see cref="SerialDevice"/>.
     /// </summary>
     public class SerialLogger : ILogger
     {
-        private readonly DataWriter _outputDataWriter;
+        private readonly SerialPort _serialPort;
 
         /// <summary>
-        /// Creates a new instance of the <see cref="DebugLogger"/>
+        /// Creates a new instance of the <see cref="SerialLogger"/>
         /// </summary>
         /// <param name="serialDevice">The serial port to use</param>
-        public SerialLogger(ref SerialDevice serialDevice)
+        /// <param name="loggerName">The logger name</param>
+        public SerialLogger(ref SerialPort serialDevice, string loggerName)
         {
-            SerialDevice = serialDevice;
-            _outputDataWriter = new DataWriter(serialDevice.OutputStream);
+            _serialPort = serialDevice;
+            if (!_serialPort.IsOpen)
+            {
+                _serialPort.Open();
+            }
+
+            LoggerName = loggerName;
             MinLogLevel = LogLevel.Debug;
         }
 
         /// <summary>
+        /// Name of the logger
+        /// </summary>
+        public string LoggerName { get; }
+
+        /// <summary>
         /// Name of the serial device
         /// </summary>
-        public SerialDevice SerialDevice { get; }
+        public SerialPort SerialPort => _serialPort;
 
         /// <summary>
         /// Sets the minimum log level
@@ -42,13 +54,21 @@ namespace nanoFramework.Logging.Serial
         public bool IsEnabled(LogLevel logLevel) => logLevel >= MinLogLevel;
 
         /// <inheritdoc />
-        public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception)
+        public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception, MethodInfo format)
         {
             if (logLevel >= MinLogLevel)
             {
-                string msg = exception == null ? state : $"{state} {exception}";
-                _outputDataWriter.WriteString(msg);
-                _outputDataWriter.Store();
+                string msgSerial;
+                if (format == null)
+                {
+                    msgSerial = exception == null ? $"{state}\r\n" : $"{state} {exception}\r\n";
+                }
+                else
+                {
+                    msgSerial = $"{(string)format.Invoke(null, new object[] { LoggerName, logLevel, eventId, state, exception })}\r\n";
+                }
+
+                _serialPort.Write(msgSerial);
             }
         }
     }

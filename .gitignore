@@ -255,3 +255,9 @@ paket-files/
 
 #SoundCloud
 *.sonarqube/
+
+#VS Code
+.vscode
+
+#Sonar Lint
+.sonarlint

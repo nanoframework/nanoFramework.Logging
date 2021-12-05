@@ -3,8 +3,9 @@
 // See LICENSE file in the project root for full license information.
 //
 
-using System;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Reflection;
 
 namespace nanoFramework.Logging
 {
@@ -54,8 +55,9 @@ namespace nanoFramework.Logging
 
         private class NullLogger : ILogger
         {
-            public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception)
+            public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception, MethodInfo format)
             {
+                // nothing to do here
             }
 
             public bool IsEnabled(LogLevel logLevel)
