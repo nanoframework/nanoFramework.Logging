@@ -12,7 +12,7 @@ using System.Reflection;
 namespace nanoFramework.Logging.Serial
 {
     /// <summary>
-    /// A logger that outputs to a <see cref="SerialDevice"/>.
+    /// A logger that outputs to a <see cref="SerialPort"/>.
     /// </summary>
     public class SerialLogger : ILogger
     {

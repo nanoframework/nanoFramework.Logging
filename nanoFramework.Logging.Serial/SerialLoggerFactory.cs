@@ -22,7 +22,7 @@ namespace nanoFramework.Logging.Serial
         private readonly Handshake _handshake;
 
         /// <summary>
-        /// Create a new instance of <see cref="SerialLoggerFactory"/> from a <see cref="SerialDevice"/>.
+        /// Create a new instance of <see cref="SerialLoggerFactory"/> from a <see cref="SerialPort"/>.
         /// </summary>
         /// <param name="comPort"></param>
         /// <param name="baudRate"></param>
