@@ -1,4 +1,8 @@
-﻿using System;
+﻿//
+// Copyright (c) .NET Foundation and Contributors
+// See LICENSE file in the project root for full license information.
+//
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -28,11 +32,8 @@ namespace nanoFramework.Logging.Syslog
         /// <param name="localPort">Local port to bind socket (0 to choose available port)</param>
         public SyslogClient(IPEndPoint endpoint, string localHostname, Facility facility = default, IPAddress localAddress = null, int localPort = 0)
         {
-            if (localHostname is null)
-                throw new ArgumentNullException(nameof(localHostname));
-
             Facility = facility;
-            LocalHostname = localHostname;
+            LocalHostname = localHostname ?? throw new ArgumentNullException(nameof(localHostname));
 
             _socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             _socket.Bind(new IPEndPoint(localAddress ?? IPAddress.Any, localPort));
@@ -84,9 +85,15 @@ namespace nanoFramework.Logging.Syslog
         public void SendMessage(Facility facility,Severity severity, string hostname, string messageTag, string messageContent)
         {
             if (_disposed)
+            {
                 throw new ObjectDisposedException(nameof(SyslogClient));
-            if (severity != Severity.None) // We don't send message with Severity.None which isn't a RFC6134 valid value
+            }
+
+            // We don't send message with Severity.None which isn't a RFC6134 valid value
+            if (severity != Severity.None) 
+            {
                 _socket.Send(FormatUdpMessage(facility, severity, hostname, messageTag, messageContent));
+            }
         }
 
         private static byte[] FormatUdpMessage(Facility facility,Severity severity, string localHostname, string messageTag, string messageContent)
@@ -102,7 +109,10 @@ namespace nanoFramework.Logging.Syslog
             headerBuilder.Append(localHostname).Append(' ');
             // RFC3164 MSG
             if (messageTag != null)
+            {
                 headerBuilder.Append(messageTag).Append(':').Append(' ');
+            }
+            
             headerBuilder.Append(messageContent ?? "");
             var s = headerBuilder.ToString();
             return UTF8Encoding.UTF8.GetBytes(s); // Ideally an UTF7 is required here to be RFC3164 compliant
@@ -112,7 +122,10 @@ namespace nanoFramework.Logging.Syslog
         {
             IPHostEntry hostEntry = Dns.GetHostEntry(hostname);
             if (hostEntry is null)
+            { 
                 throw new ArgumentException($"Hostname `{hostname}` is not resolvable");
+            }
+            
             return new IPEndPoint(hostEntry.AddressList[0], port);
         }
 
@@ -120,7 +133,7 @@ namespace nanoFramework.Logging.Syslog
         public void Dispose()
         {
             _disposed = true;
-            ((IDisposable)_socket).Dispose();
+            ((IDisposable)_socket)?.Dispose();
         }
     }
 }

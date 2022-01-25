@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿//
+// Copyright (c) .NET Foundation and Contributors
+// See LICENSE file in the project root for full license information.
+//
+using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
 
@@ -45,7 +49,10 @@ namespace nanoFramework.Logging.Syslog
         public ILogger CreateLogger(string categoryName)
         {
             if (_disposed)
+            {
                 throw new ObjectDisposedException(nameof(SyslogLoggerFactory));
+            }
+                
             return new SyslogLogger(_client,categoryName);
         }
 
@@ -54,7 +61,7 @@ namespace nanoFramework.Logging.Syslog
         {
             _disposed = true;
             // If logger created through this factory are used after this you will get exception
-            _client.Dispose();
+            _client?.Dispose();
         }
     }
 }

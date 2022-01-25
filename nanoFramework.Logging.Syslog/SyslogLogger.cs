@@ -1,4 +1,8 @@
-﻿using System;
+﻿//
+// Copyright (c) .NET Foundation and Contributors
+// See LICENSE file in the project root for full license information.
+//
+using System;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
 
@@ -10,7 +14,7 @@ namespace nanoFramework.Logging.Syslog
     /// </summary>
     public class SyslogLogger : ILogger
     {
-        private SyslogClient _client;
+        private readonly SyslogClient _client;
 
         /// <summary>
         /// Create new logger based on existing SyslogClient. Recommended to use LoggerFactory patern trough SyslogLoggerFactory instead of direct use.
@@ -20,10 +24,7 @@ namespace nanoFramework.Logging.Syslog
         /// <exception cref="ArgumentNullException"></exception>
         public SyslogLogger(SyslogClient client, string categoryName)
         {
-            if (client is null)
-                throw new ArgumentNullException(nameof(client));
-            
-            _client = client;
+            _client = client ?? throw new ArgumentNullException(nameof(client));
             LoggerCategoryName = categoryName;
         }
 
@@ -52,9 +53,13 @@ namespace nanoFramework.Logging.Syslog
             {
                 string message;
                 if (format is null)
+                {
                     message = exception == null ? $"{state}" : $"{state} {exception}";
+                }
                 else
+                {
                     message = $"{(string)format.Invoke(null, new object[] { LoggerCategoryName, logLevel, eventId, state, exception })}";
+                }
 
                 _client.SendMessage(LogLevelToSeverity(logLevel), LoggerCategoryName, message);
             }
