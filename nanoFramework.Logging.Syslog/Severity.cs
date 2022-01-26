@@ -3,6 +3,8 @@
 // See LICENSE file in the project root for full license information.
 //
 
+using Microsoft.Extensions.Logging;
+
 namespace nanoFramework.Logging.Syslog
 {
     /// <summary>
@@ -10,16 +12,41 @@ namespace nanoFramework.Logging.Syslog
     /// </summary>
     public enum Severity
     {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+        /// <summary>
+        /// Not an official RFC3164 facility. No entry will be generated when called with this Severity
+        /// </summary>
         None = -1,
+        /// <summary>
+        /// Emergency: system is unusable. No equivalent in <see cref="LogLevel"/>
+        /// </summary>
         Emergency,
+        /// <summary>
+        /// Alert: action must be taken immediately. No equivalent in <see cref="LogLevel"/>
+        /// </summary>
         Alert,
+        /// <summary>
+        /// Critical: critical conditions. Mapped to <see cref="LogLevel.Critical"/>
+        /// </summary>
         Critical,
+        /// <summary>
+        /// Error: error conditions. Mapped to <see cref="LogLevel.Error"/>
+        /// </summary>
         Error,
+        /// <summary>
+        /// Warning: warning conditions. Mapped to <see cref="LogLevel.Warning"/>
+        /// </summary>
         Warning,
+        /// <summary>
+        /// Notice: normal but significant condition. No equivalent in <see cref="LogLevel"/>
+        /// </summary>
         Notice,
+        /// <summary>
+        /// Informational: informational messages. Mapped to <see cref="LogLevel.Information"/>
+        /// </summary>
         Informational,
+        /// <summary>
+        /// Debug: debug-level messages. Mapped to <see cref="LogLevel.Debug"/> and <see cref="LogLevel.Trace"/>
+        /// </summary>
         Debug
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     };
 }
