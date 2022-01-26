@@ -39,9 +39,6 @@
     <Reference Include="mscorlib">
       <HintPath>..\packages\nanoFramework.CoreLibrary.1.12.0-preview.1\lib\mscorlib.dll</HintPath>
     </Reference>
-    <Reference Include="nanoFramework.Logging">
-      <HintPath>..\packages\nanoFramework.Logging.1.0.1-preview.10\lib\nanoFramework.Logging.dll</HintPath>
-    </Reference>
     <Reference Include="nanoFramework.Runtime.Events">
       <HintPath>..\packages\nanoFramework.Runtime.Events.1.10.0-preview.4\lib\nanoFramework.Runtime.Events.dll</HintPath>
     </Reference>
@@ -58,6 +55,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="key.snk" />
+  </ItemGroup>
+  <ItemGroup>
+	<ProjectReference Include="..\nanoFramework.Logging\nanoFramework.Logging.nfproj" />
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
   <ProjectExtensions>
