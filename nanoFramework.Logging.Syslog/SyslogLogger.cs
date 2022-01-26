@@ -2,6 +2,7 @@
 // Copyright (c) .NET Foundation and Contributors
 // See LICENSE file in the project root for full license information.
 //
+
 using System;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
@@ -32,7 +33,7 @@ namespace nanoFramework.Logging.Syslog
         /// Minimum log level used by this logger.
         /// </summary>
         public LogLevel MinLogLevel { get; set; } //by default 0 -> Trace
-        
+
         /// <summary>
         /// CategoryName of this logger used as TAG in the Syslog messages.
         /// </summary>
@@ -49,7 +50,7 @@ namespace nanoFramework.Logging.Syslog
         /// <inheritdoc />
         public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception, MethodInfo format)
         {
-            if (logLevel >= MinLogLevel && logLevel!=LogLevel.None)
+            if (logLevel >= MinLogLevel && logLevel != LogLevel.None)
             {
                 string message;
                 if (format is null)
@@ -64,18 +65,17 @@ namespace nanoFramework.Logging.Syslog
                 _client.SendMessage(LogLevelToSeverity(logLevel), LoggerCategoryName, message);
             }
         }
-        
-        private Severity LogLevelToSeverity(LogLevel level) => level switch
-            {
-                LogLevel.Trace => Severity.Debug,
-                LogLevel.Debug => Severity.Debug,
-                LogLevel.Information => Severity.Informational,
-                LogLevel.Warning => Severity.Warning,
-                LogLevel.Error => Severity.Error,
-                LogLevel.Critical => Severity.Critical,
-                LogLevel.None => Severity.None,
-                _ => Severity.None
-            };
 
+        private Severity LogLevelToSeverity(LogLevel level) => level switch
+        {
+            LogLevel.Trace => Severity.Debug,
+            LogLevel.Debug => Severity.Debug,
+            LogLevel.Information => Severity.Informational,
+            LogLevel.Warning => Severity.Warning,
+            LogLevel.Error => Severity.Error,
+            LogLevel.Critical => Severity.Critical,
+            LogLevel.None => Severity.None,
+            _ => Severity.None
+        };
     }
 }
