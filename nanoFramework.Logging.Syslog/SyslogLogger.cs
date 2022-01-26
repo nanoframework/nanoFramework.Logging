@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 namespace nanoFramework.Logging.Syslog
 {
     /// <summary>
-    /// ILogger implmentation that send message log to a Syslog server following RFC3164 convention.
+    /// <see cref="ILogger"/> implementation that send message log to a Syslog server following RFC3164 convention.
     /// While not mandatory it is recommended to use <see cref="SyslogLoggerFactory"/> to create the SyslogLogger instances.
     /// </summary>
     public class SyslogLogger : ILogger
@@ -18,12 +18,14 @@ namespace nanoFramework.Logging.Syslog
         private readonly SyslogClient _client;
 
         /// <summary>
-        /// Create new logger based on existing SyslogClient. Recommended to use LoggerFactory patern trough SyslogLoggerFactory instead of direct use.
+        /// Create new logger based on existing <see cref="SyslogClient"/>. Recommended to use LoggerFactory pattern trough <see cref="SyslogLoggerFactory"/> instead of direct use.
         /// </summary>
-        /// <param name="client">SyslogClient to use for sending message</param>
-        /// <param name="categoryName">CategoryName of this logger used as TAG in the Syslog messages</param>
+        /// <param name="client"><see cref="SyslogClient"/> to use for sending message.</param>
+        /// <param name="categoryName">CategoryName of this logger used as TAG in the Sys log messages.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public SyslogLogger(SyslogClient client, string categoryName)
+        public SyslogLogger(
+            SyslogClient client,
+            string categoryName)
         {
             _client = client ?? throw new ArgumentNullException(nameof(client));
             LoggerCategoryName = categoryName;
@@ -40,7 +42,7 @@ namespace nanoFramework.Logging.Syslog
         public string LoggerCategoryName { get; }
 
         /// <summary>
-        /// Underlying Syslog client used by this logger.
+        /// Underlying <see cref="SyslogClient"/> used by this logger.
         /// </summary>
         public SyslogClient Client => _client;
 
@@ -48,7 +50,12 @@ namespace nanoFramework.Logging.Syslog
         public bool IsEnabled(LogLevel logLevel) => logLevel >= MinLogLevel;
 
         /// <inheritdoc />
-        public void Log(LogLevel logLevel, EventId eventId, string state, Exception exception, MethodInfo format)
+        public void Log(
+            LogLevel logLevel,
+            EventId eventId,
+            string state,
+            Exception exception,
+            MethodInfo format)
         {
             if (logLevel >= MinLogLevel && logLevel != LogLevel.None)
             {
