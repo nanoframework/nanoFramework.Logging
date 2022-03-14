@@ -20,9 +20,9 @@ There is also a package with the Serial Logging, another with Stream Logging onl
     <tags>nanoFramework C# csharp netmf netnf logger Syslog</tags>
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.12.0-preview.18" />
-      <dependency id="nanoFramework.Runtime.Events" version="1.10.0-preview.8" />
-      <dependency id="nanoFramework.System.IO.Streams" version="1.0.0-preview.12" />
-      <dependency id="nanoFramework.System.Net" version="1.8.0-preview.29" />
+      <dependency id="nanoFramework.Runtime.Events" version="1.10.0-preview.11" />
+      <dependency id="nanoFramework.System.IO.Streams" version="1.0.0-preview.15" />
+      <dependency id="nanoFramework.System.Net" version="1.8.0-preview.32" />
       <dependency id="nanoFramework.System.Threading" version="1.0.4-preview.16" />
       <dependency id="nanoFramework.Logging" version="$version$" />
     </dependencies>
