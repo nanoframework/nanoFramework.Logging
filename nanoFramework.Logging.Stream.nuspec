@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>nanoFramework.Logging.Stream</id>
@@ -19,7 +19,7 @@
 There is also a package with the Serial Logger only and another with the basic Debug Logger.</description>
     <tags>nanoFramework C# csharp netmf netnf logger</tags>
     <dependencies>
-      <dependency id="nanoFramework.CoreLibrary" version="1.12.0-preview.18" />
+      <dependency id="nanoFramework.CoreLibrary" version="1.12.0-preview.19" />
       <dependency id="nanoFramework.System.Text" version="1.1.3-preview.22" />
       <dependency id="nanoFramework.System.IO.FileSystem" version="1.0.3-preview.16" />
       <dependency id="nanoFramework.Logging" version="$version$" />
