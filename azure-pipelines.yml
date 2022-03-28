@@ -1,10 +1,27 @@
+# Copyright (c) .NET Foundation and Contributors
+# See LICENSE file in the project root for full license information.
+
 trigger:
   branches:
-    include: [main, develop, "release-*" ]
+    include:
+      - main
+      - develop
+      - release-*
   paths:
-    exclude: [README.md, LICENSE.md, NuGet.Config, .github_changelog_generator, .gitignore]
+    exclude:
+      - .github_changelog_generator
+      - .gitignore
+      - CHANGELOG.md
+      - CODE_OF_CONDUCT.md
+      - LICENSE.md
+      - README.md
+      - NuGet.Config
+      - assets/*
+      - config/*
+      - .github/*
   tags:
-    include: ["v*"]
+    include: 
+      - v*
 
 # PR always trigger build
 pr:
@@ -19,7 +36,7 @@ resources:
       endpoint: nanoframework
 
 pool:
-  vmImage: 'windows-2019'
+  vmImage: 'windows-latest'
 
 variables:
   DOTNET_NOLOGO: true
@@ -51,40 +68,21 @@ steps:
   parameters:
     nugetPackageName: 'nanoFramework.Logging.Stream'
 
+- template: azure-pipelines-templates/class-lib-package.yml@templates  
+  parameters:
+    nugetPackageName: 'nanoFramework.Logging.Syslog'
+
 - template: azure-pipelines-templates/class-lib-publish.yml@templates  
-
-# need to push remaining packages to NuGet individually because the template above can only push one package (happens on tag builds for any branch)
-- task: NuGetCommand@2
-  condition: and( succeeded(), ne( variables['StartReleaseCandidate'], true ) )
-  continueOnError: true
-  displayName: Push NuGet package to Azure Artifacts
-  inputs:
-    command: push
-    nuGetFeedType: external
-    allowPackageConflicts: true
-    packagesToPush: 
-      $(Build.ArtifactStagingDirectory)/*.nupkg
-      $(Build.ArtifactStagingDirectory)/*.snupkg
-    publishFeedCredentials: 'AzureArtifacts-$(System.TeamProject)'
-    includeSymbols: true
-
-- task: NuGetCommand@2
-  condition: and( succeeded(), ne( variables['StartReleaseCandidate'], true ) )
-  continueOnError: true
-  displayName: Push NuGet packages to Nuget
-  inputs:
-    command: push
-    nuGetFeedType: external
-    allowPackageConflicts: true
-    packagesToPush: 
-      $(Build.ArtifactStagingDirectory)/*.nupkg
-      $(Build.ArtifactStagingDirectory)/*.snupkg
-    publishFeedCredentials: 'NuGet-$(System.TeamProject)'
-    includeSymbols: true
 
 # create or update GitHub release
 - task: GithubRelease@1
-  condition: and( succeeded(), eq(variables['System.PullRequest.PullRequestId'], ''), not( startsWith(variables['Build.SourceBranch'], 'refs/tags/v') ), ne( variables['StartReleaseCandidate'], true ) )
+  condition: >-
+    and(
+      succeeded(),
+      eq(variables['System.PullRequest.PullRequestId'], ''),
+      not(startsWith(variables['Build.SourceBranch'], 'refs/tags/v')),
+      ne(variables['StartReleaseCandidate'], true)
+    )
   displayName: Create/Update GitHub PREVIEW release
   inputs:
     gitHubConnection: 'github.com_nano-$(System.TeamProject)'
@@ -92,7 +90,7 @@ steps:
     tag: v$(MY_NUGET_VERSION)
     title: '$(nugetPackageName) Library v$(MY_NUGET_VERSION)'
     releaseNotesSource: inline
-    releaseNotesInline: 'Check the [changelog]($(Build.Repository.Uri)/blob/$(Build.SourceBranchName)/CHANGELOG.md).<br><br><h4>Install from NuGet</h4><br>The following NuGet packages are available for download from this release:<br>:package: [.NET](https://www.nuget.org/packages/$(nugetPackageName)/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION).<br>:package: [.NET (Serial API only)](https://www.nuget.org/packages/nanoFramework.Logging.Serial/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)<br>:package: [.NET (Serial API only)](https://www.nuget.org/packages/nanoFramework.Logging.Serial/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)'
+    releaseNotesInline: 'Check the [changelog]($(Build.Repository.Uri)/blob/$(Build.SourceBranchName)/CHANGELOG.md).<br><br><h4>Install from NuGet</h4><br>The following NuGet packages are available for download from this release:<br>:package: [.NET](https://www.nuget.org/packages/$(nugetPackageName)/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION).<br>:package: [.NET (Serial API only)](https://www.nuget.org/packages/nanoFramework.Logging.Serial/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)<br>:package: [.NET (Stream API only)](https://www.nuget.org/packages/nanoFramework.Logging.Stream/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)<br>:package: [.NET (Syslog API only)](https://www.nuget.org/packages/nanoFramework.Logging.Syslog/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)'
     assets: '$(Build.ArtifactStagingDirectory)/$(nugetPackageName).$(MY_NUGET_VERSION).nupkg'
     assetUploadMode: replace
     isPreRelease: true
@@ -100,7 +98,13 @@ steps:
 
 # create or update GitHub release ON tags from release or main branches
 - task: GithubRelease@1
-  condition: and( succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'), not(contains(variables['Build.SourceBranch'], 'preview') ), ne( variables['StartReleaseCandidate'], true ) )
+  condition: >-
+    and(
+      succeeded(),
+      startsWith(variables['Build.SourceBranch'], 'refs/tags/v'),
+      not(contains(variables['Build.SourceBranch'], 'preview')),
+      ne(variables['StartReleaseCandidate'], true)
+    )
   displayName: Create/Update GitHub stable release
   inputs:
     gitHubConnection: 'github.com_nano-$(System.TeamProject)'
@@ -108,7 +112,7 @@ steps:
     tag: v$(MY_NUGET_VERSION)
     title: '$(nugetPackageName) Library v$(MY_NUGET_VERSION)'
     releaseNotesSource: inline
-    releaseNotesInline: 'Check the [changelog]($(Build.Repository.Uri)/blob/$(Build.SourceBranchName)/CHANGELOG.md).<br><br><h4>Install from NuGet</h4><br>The following NuGet packages are available for download from this release:<br>:package: [.NET](https://www.nuget.org/packages/$(nugetPackageName)/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION).<br>:package: [.NET (Stream API only)](https://www.nuget.org/packages/nanoFramework.Logging.Stream/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)<br>:package: [.NET (Serial API only)](https://www.nuget.org/packages/nanoFramework.Logging.Serial/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)'
+    releaseNotesInline: 'Check the [changelog]($(Build.Repository.Uri)/blob/$(Build.SourceBranchName)/CHANGELOG.md).<br><br><h4>Install from NuGet</h4><br>The following NuGet packages are available for download from this release:<br>:package: [.NET](https://www.nuget.org/packages/$(nugetPackageName)/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION).<br>:package: [.NET (Stream API only)](https://www.nuget.org/packages/nanoFramework.Logging.Serial/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)<br>:package: [.NET (Stream API only)](https://www.nuget.org/packages/nanoFramework.Logging.Stream/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)<br>:package: [.NET (Syslog API only)](https://www.nuget.org/packages/nanoFramework.Logging.Syslog/$(MY_NUGET_VERSION)) v$(MY_NUGET_VERSION)'
     assets: '$(Build.ArtifactStagingDirectory)/$(nugetPackageName).$(MY_NUGET_VERSION).nupkg'
     assetUploadMode: replace
     isPreRelease: false

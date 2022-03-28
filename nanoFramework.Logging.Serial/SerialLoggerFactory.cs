@@ -22,7 +22,7 @@ namespace nanoFramework.Logging.Serial
         private readonly Handshake _handshake;
 
         /// <summary>
-        /// Create a new instance of <see cref="SerialLoggerFactory"/> from a <see cref="SerialDevice"/>.
+        /// Create a new instance of <see cref="SerialLoggerFactory"/> from a <see cref="SerialPort"/>.
         /// </summary>
         /// <param name="comPort"></param>
         /// <param name="baudRate"></param>
@@ -49,12 +49,15 @@ namespace nanoFramework.Logging.Serial
         /// <inheritdoc/>
         public ILogger CreateLogger(string categoryName)
         {
-            _serial = new SerialPort(_comPort);
-            _serial.BaudRate = _baudRate;
-            _serial.Parity = _parity;
-            _serial.StopBits = _stopBits;
-            _serial.Handshake = _handshake;
-            _serial.DataBits = _dataBits;
+            if (_serial is null)
+            {
+                _serial = new SerialPort(_comPort);
+                _serial.BaudRate = _baudRate;
+                _serial.Parity = _parity;
+                _serial.StopBits = _stopBits;
+                _serial.Handshake = _handshake;
+                _serial.DataBits = _dataBits;
+            }
             return new SerialLogger(ref _serial, categoryName);
         }
 
