@@ -1,5 +1,199 @@
 # Changelog
 
+## [v1.0.1-preview.32](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.32) (2022-03-28)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.31...v1.0.1-preview.32)
+
+## [v1.0.1-preview.31](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.31) (2022-03-28)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.30...v1.0.1-preview.31)
+
+**Documentation and other chores:**
+
+- Update 7 NuGet dependencies [\#119](https://github.com/nanoframework/nanoFramework.Logging/pull/119)
+
+## [v1.0.1-preview.30](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.30) (2022-03-28)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.28...v1.0.1-preview.30)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#113](https://github.com/nanoframework/nanoFramework.Logging/pull/113)
+- Update 1 NuGet dependencies [\#112](https://github.com/nanoframework/nanoFramework.Logging/pull/112)
+
+## [v1.0.1-preview.28](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.28) (2022-03-18)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.27...v1.0.1-preview.28)
+
+**Documentation and other chores:**
+
+- Update 6 NuGet dependencies [\#111](https://github.com/nanoframework/nanoFramework.Logging/pull/111)
+
+## [v1.0.1-preview.27](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.27) (2022-03-17)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.26...v1.0.1-preview.27)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#108](https://github.com/nanoframework/nanoFramework.Logging/pull/108)
+
+## [v1.0.1-preview.26](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.26) (2022-03-15)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.25...v1.0.1-preview.26)
+
+**Documentation and other chores:**
+
+- Update 7 NuGet dependencies [\#107](https://github.com/nanoframework/nanoFramework.Logging/pull/107)
+
+## [v1.0.1-preview.25](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.25) (2022-03-14)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.24...v1.0.1-preview.25)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#99](https://github.com/nanoframework/nanoFramework.Logging/pull/99)
+
+## [v1.0.1-preview.24](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.24) (2022-03-11)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.23...v1.0.1-preview.24)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#98](https://github.com/nanoframework/nanoFramework.Logging/pull/98)
+
+## [v1.0.1-preview.23](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.23) (2022-02-25)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.21...v1.0.1-preview.23)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#97](https://github.com/nanoframework/nanoFramework.Logging/pull/97)
+- Update 1 NuGet dependencies [\#96](https://github.com/nanoframework/nanoFramework.Logging/pull/96)
+
+## [v1.0.1-preview.21](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.21) (2022-02-17)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.19...v1.0.1-preview.21)
+
+**Documentation and other chores:**
+
+- Update 6 NuGet dependencies [\#95](https://github.com/nanoframework/nanoFramework.Logging/pull/95)
+
+## [v1.0.1-preview.19](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.19) (2022-02-11)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.18...v1.0.1-preview.19)
+
+**Documentation and other chores:**
+
+- Update 2 NuGet dependencies [\#93](https://github.com/nanoframework/nanoFramework.Logging/pull/93)
+
+## [v1.0.1-preview.18](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.18) (2022-02-08)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.17...v1.0.1-preview.18)
+
+**Documentation and other chores:**
+
+- Update 5 NuGet dependencies [\#92](https://github.com/nanoframework/nanoFramework.Logging/pull/92)
+
+## [v1.0.1-preview.17](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.17) (2022-02-04)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.16...v1.0.1-preview.17)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#91](https://github.com/nanoframework/nanoFramework.Logging/pull/91)
+
+## [v1.0.1-preview.16](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.16) (2022-01-28)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.15...v1.0.1-preview.16)
+
+**Documentation and other chores:**
+
+- Update 2 NuGet dependencies [\#90](https://github.com/nanoframework/nanoFramework.Logging/pull/90)
+
+## [v1.0.1-preview.15](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.15) (2022-01-28)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.14...v1.0.1-preview.15)
+
+**Documentation and other chores:**
+
+- Update 8 NuGet dependencies [\#89](https://github.com/nanoframework/nanoFramework.Logging/pull/89)
+
+## [v1.0.1-preview.14](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.14) (2022-01-28)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.13...v1.0.1-preview.14)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#87](https://github.com/nanoframework/nanoFramework.Logging/pull/87)
+
+## [v1.0.1-preview.13](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.13) (2022-01-27)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.12...v1.0.1-preview.13)
+
+## [v1.0.1-preview.12](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.12) (2022-01-26)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.11...v1.0.1-preview.12)
+
+**Implemented enhancements:**
+
+- Add Syslog ILogger provider [\#86](https://github.com/nanoframework/nanoFramework.Logging/pull/86)
+
+## [v1.0.1-preview.11](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.11) (2022-01-25)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.10...v1.0.1-preview.11)
+
+## [v1.0.1-preview.10](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.10) (2022-01-25)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.9...v1.0.1-preview.10)
+
+**Implemented enhancements:**
+
+- Cache SerialPort in SerialLoggerFactory [\#83](https://github.com/nanoframework/nanoFramework.Logging/pull/83)
+
+## [v1.0.1-preview.9](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.9) (2022-01-21)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.8...v1.0.1-preview.9)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#82](https://github.com/nanoframework/nanoFramework.Logging/pull/82)
+
+## [v1.0.1-preview.8](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.8) (2022-01-21)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.6...v1.0.1-preview.8)
+
+**Documentation and other chores:**
+
+- Update 8 NuGet dependencies [\#81](https://github.com/nanoframework/nanoFramework.Logging/pull/81)
+
+## [v1.0.1-preview.6](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.6) (2022-01-14)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.4...v1.0.1-preview.6)
+
+**Documentation and other chores:**
+
+- Update 2 NuGet dependencies [\#77](https://github.com/nanoframework/nanoFramework.Logging/pull/77)
+
+## [v1.0.1-preview.4](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.4) (2022-01-04)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.3...v1.0.1-preview.4)
+
+**Documentation and other chores:**
+
+- Update 1 nuget dependencies [\#76](https://github.com/nanoframework/nanoFramework.Logging/pull/76)
+
+## [v1.0.1-preview.3](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.3) (2021-12-29)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0...v1.0.1-preview.3)
+
+**Documentation and other chores:**
+
+- Update 3 nuget dependencies [\#75](https://github.com/nanoframework/nanoFramework.Logging/pull/75)
+
+## [v1.0.0](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.0) (2021-12-05)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.142...v1.0.0)
+
 ## [v1.0.0-preview.142](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.0-preview.142) (2021-12-05)
 
 [Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.141...v1.0.0-preview.142)
