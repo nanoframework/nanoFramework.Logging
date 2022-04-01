@@ -1,5 +1,21 @@
 # Changelog
 
+## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Logging/tree/HEAD)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1...HEAD)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#123](https://github.com/nanoframework/nanoFramework.Logging/pull/123)
+
+## [v1.0.1](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1) (2022-03-28)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.32...v1.0.1)
+
+**Documentation and other chores:**
+
+- release-v1.0.1 [\#120](https://github.com/nanoframework/nanoFramework.Logging/pull/120)
+
 ## [v1.0.1-preview.32](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1-preview.32) (2022-03-28)
 
 [Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.1-preview.31...v1.0.1-preview.32)
@@ -193,6 +209,10 @@
 ## [v1.0.0](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.0) (2021-12-05)
 
 [Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.0.0-preview.142...v1.0.0)
+
+**Documentation and other chores:**
+
+- release-v1.0.0 [\#74](https://github.com/nanoframework/nanoFramework.Logging/pull/74)
 
 ## [v1.0.0-preview.142](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.0-preview.142) (2021-12-05)
 
