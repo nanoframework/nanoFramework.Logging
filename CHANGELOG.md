@@ -6,6 +6,9 @@
 
 **Documentation and other chores:**
 
+- Update 1 NuGet dependencies [\#126](https://github.com/nanoframework/nanoFramework.Logging/pull/126)
+- Update 1 NuGet dependencies [\#125](https://github.com/nanoframework/nanoFramework.Logging/pull/125)
+- Update 1 NuGet dependencies [\#124](https://github.com/nanoframework/nanoFramework.Logging/pull/124)
 - Update 1 NuGet dependencies [\#123](https://github.com/nanoframework/nanoFramework.Logging/pull/123)
 
 ## [v1.0.1](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.0.1) (2022-03-28)
