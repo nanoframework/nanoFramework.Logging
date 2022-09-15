@@ -2,7 +2,15 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Logging/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.7...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.9...HEAD)
+
+**Documentation and other chores:**
+
+- Update 2 NuGet dependencies [\#152](https://github.com/nanoframework/nanoFramework.Logging/pull/152)
+
+## [v1.1.9](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.1.9) (2022-09-15)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.7...v1.1.9)
 
 **Documentation and other chores:**
 
