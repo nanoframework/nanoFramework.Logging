@@ -16,9 +16,9 @@
       },
       "nanoFramework.System.IO.FileSystem": {
         "type": "Direct",
-        "requested": "[1.1.2, 1.1.2]",
-        "resolved": "1.1.2",
-        "contentHash": "DoLNw3JfxcN2Zd+IxpIuxehUUD6IdRfQz1pDp8X5urbZbheJ+JJjPA0U1S63+Nx7ur7Vti554bkFXwiY2MPBcg=="
+        "requested": "[1.1.5, 1.1.5]",
+        "resolved": "1.1.5",
+        "contentHash": "z9ZVybWAtCnAUrlvvyLVBSVT0DqjBq/PBGxAI7C3qhdceF9qHwmLY+UQicvLsmKiGH3Ff0lzey0BlHr5ub8Tew=="
       },
       "nanoFramework.System.IO.Streams": {
         "type": "Direct",
