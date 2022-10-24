@@ -21,7 +21,7 @@ There is also a package with the Stream Logging only and another with the basic 
     <dependencies>
       <dependency id="nanoFramework.CoreLibrary" version="1.12.0" />
       <dependency id="nanoFramework.Runtime.Events" version="1.11.1" />
-      <dependency id="nanoFramework.System.Text" version="1.2.15" />
+      <dependency id="nanoFramework.System.Text" version="1.2.17" />
       <dependency id="nanoFramework.System.IO.Ports" version="1.1.36" />
       <dependency id="nanoFramework.System.Collections" version="1.4.0" />
       <dependency id="nanoFramework.Logging" version="$version$" />
