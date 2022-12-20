@@ -410,7 +410,11 @@ namespace Microsoft.Extensions.Logging
                 throw new ArgumentNullException(nameof(logger));
             }
 
-            logger.Log(logLevel, eventId, string.Format(message, args), exception, MessageFormatter);
+            string formatedMessage = message; 
+            if(args.Length > 0) 
+                formatedMessage = string.Format(message, args);
+
+            logger.Log(logLevel, eventId, formatedMessage, exception, MessageFormatter);
         }
 
         #endregion
