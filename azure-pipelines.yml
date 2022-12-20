@@ -50,7 +50,7 @@ steps:
   parameters:
     sonarCloudProject: 'nanoframework_nanoFramework.Logging'
     runUnitTests: true
-    unitTestRunsettings: '$(System.DefaultWorkingDirectory)\Tests\UnitTestDebugLogging\nano.runsettings'
+    unitTestRunsettings: '$(System.DefaultWorkingDirectory)\.runsettings'
 
 # package steps
 - template: azure-pipelines-templates/class-lib-package.yml@templates  
