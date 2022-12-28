@@ -2,7 +2,29 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Logging/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.45...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.58...HEAD)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#197](https://github.com/nanoframework/nanoFramework.Logging/pull/197)
+
+## [v1.1.58](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.1.58) (2022-12-28)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.47...v1.1.58)
+
+**Documentation and other chores:**
+
+- Update 11 NuGet dependencies [\#196](https://github.com/nanoframework/nanoFramework.Logging/pull/196)
+- Move runsettings to solution folder [\#185](https://github.com/nanoframework/nanoFramework.Logging/pull/185)
+- Update 1 NuGet dependencies [\#183](https://github.com/nanoframework/nanoFramework.Logging/pull/183)
+- Update 1 NuGet dependencies [\#182](https://github.com/nanoframework/nanoFramework.Logging/pull/182)
+- Update 1 NuGet dependencies [\#181](https://github.com/nanoframework/nanoFramework.Logging/pull/181)
+- Update 1 NuGet dependencies [\#180](https://github.com/nanoframework/nanoFramework.Logging/pull/180)
+- Update 1 NuGet dependencies [\#179](https://github.com/nanoframework/nanoFramework.Logging/pull/179)
+
+## [v1.1.47](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.1.47) (2022-10-28)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.45...v1.1.47)
 
 **Documentation and other chores:**
 
