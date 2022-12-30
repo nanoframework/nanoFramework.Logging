@@ -32,6 +32,7 @@
     <Compile Include="DebugTest.cs" />
     <Compile Include="EventIdTests.cs" />
     <Compile Include="FormattingTest.cs" />
+    <Compile Include="LoggerExtensionsTests.cs" />
     <Compile Include="MemoryStreamTests.cs" />
     <Compile Include="MyTestComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,12 +84,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="nano.runsettings" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\nanoFramework.Logging.Serial\nanoFramework.Logging.Serial.nfproj" />
     <ProjectReference Include="..\..\nanoFramework.Logging.Stream\nanoFramework.Logging.Stream.nfproj" />
     <ProjectReference Include="..\..\nanoFramework.Logging\nanoFramework.Logging.nfproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.lock.json" />
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
   <!-- MANUAL UPDATE HERE -->
