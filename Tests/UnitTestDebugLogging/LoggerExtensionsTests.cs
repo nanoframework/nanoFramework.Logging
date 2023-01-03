@@ -15,94 +15,126 @@ namespace UnitTestDebugLogging
     [TestClass]
     public class LoggerExtensionsTests
     {
-        public ILogger GetLogger()
-        {
-            var logger = new DebugLogger("LoggerExtensionsTests");
-            logger.MinLogLevel = LogLevel.Trace;
-            return logger;
-        }
+        private static ILogger _logger;
+
         /// <summary>
-        /// LogInformation Test with formatted string with some parameters
+        /// Initializes a static logger in the debug output. If none of the function throughs, then the output should be correct.
+        /// </summary>
+        [Setup]
+        public void GetLogger()
+        {
+            _logger = new DebugLogger("LoggerExtensionsTests");
+            ((DebugLogger)_logger).MinLogLevel = LogLevel.Trace;
+        }
+
+        /// <summary>
+        /// LogInformation Test with formatted string with some parameters.
         /// </summary>
         [TestMethod]
         public void LogInformationFormatedStringWithParams()
         {
-            GetLogger().LogInformation("{0}{1}{2}", "nano", "frame", "work");
+            _logger.LogInformation("{0}{1}{2}", "nano", "frame", "work");
         }
+
         /// <summary>
-        /// LogWarning Test with formatted string with some parameters
+        /// LogWarning Test with formatted string with some parameters.
         /// </summary>
         [TestMethod]
         public void LogWarningFormatedStringWithParams()
         {
-            GetLogger().LogWarning("{0}{1}{2}", "nano", "frame", "work");
+            _logger.LogWarning("{0}{1}{2}", "nano", "frame", "work");
         }
+
         /// <summary>
-        /// LogTrace Test with formatted string with some parameters
+        /// LogTrace Test with formatted string with some parameters.
         /// </summary>
         [TestMethod]
         public void LogTraceFormatedStringWithParams()
         {
-            GetLogger().LogTrace("{0}{1}{2}", "nano", "frame", "work");
+            _logger.LogTrace("{0}{1}{2}", "nano", "frame", "work");
         }
+
         /// <summary>
-        /// LogError Test with formatted string with some parameters
+        /// LogError Test with formatted string with some parameters.
         /// </summary>
         [TestMethod]
         public void LogErrorFormatedStringWithParams()
         {
-            GetLogger().LogError("{0}{1}{2}", "nano", "frame", "work");
+            _logger.LogError("{0}{1}{2}", "nano", "frame", "work");
         }
+
         /// <summary>
-        /// LogDebug Test with formatted string with some parameters
+        /// LogDebug Test with formatted string with some parameters.
         /// </summary>
         [TestMethod]
         public void LogDebugFormatedStringWithParams()
         {
-            GetLogger().LogDebug("{0}{1}{2}", "nano", "frame", "work");
+            _logger.LogDebug("{0}{1}{2}", "nano", "frame", "work");
         }
+
         /// <summary>
-        /// LogCritical Test with formatted string with some parameters
+        /// LogCritical Test with formatted string with some parameters.
         /// </summary>
         [TestMethod]
         public void LogCriticalFormatedStringWithParams()
         {
-            GetLogger().LogCritical("{0}{1}{2}", "nano", "frame", "work");
+            _logger.LogCritical("{0}{1}{2}", "nano", "frame", "work");
         }
+
         /// <summary>
-        /// Log Test with formatted string with some parameters and all log levels
+        /// Log Test with formatted string with some parameters and all log levels.
         /// </summary>
         [TestMethod]
         public void LogFormatedStringWithParams()
         {
             for (int i = 0; i < 7; i++)
             {
-                GetLogger().Log((LogLevel)i, "{0}{1}{2}", "nano", "frame", "work");
+                _logger.Log((LogLevel)i, "{0}{1}{2}", "nano", "frame", "work");
             }
         }
+
         /// <summary>
-        /// string.Format on a json string doesn't work well
+        /// string.Format on a json string doesn't work well.
         /// </summary>
         [TestMethod]
         public void LogJsonStringWithParams()
         {
             Assert.ThrowsException(typeof(ArgumentException), LogJsonStringWithParamsThrowEx);
         }
+
         /// <summary>
-        /// Incorrect call
+        /// Incorrect call.
         /// </summary>
         private void LogJsonStringWithParamsThrowEx()
         {
-            GetLogger().LogError(@"{ ""Message"":""nanoframework"" }", 1, 2);
+            _logger.LogError(@"{ ""Message"":""nanoframework"" }", 1, 2);
         }
+
         /// <summary>
-        /// Logging a json formatted string
+        /// Logging a json formatted string.
         /// </summary>
         [TestMethod]
         public void LogJsonStringWitoutParams()
         {
-            GetLogger().LogInformation(@"{ ""Message"":""nanoframework"" }");
+            _logger.LogInformation(@"{ ""Message"":""nanoframework"" }");
         }
 
+        /// <summary>
+        /// Logging with null params.
+        /// </summary>
+        [TestMethod]
+        public void LogNullArgumentExtensioon()
+        {
+            _logger.Log(LogLevel.Debug, "Null arguments", null);
+        }
+
+        /// <summary>
+        /// Logging with empty params.
+        /// </summary>
+        [TestMethod]
+        public void LogEmptyArgumentExtensioon()
+        {
+            _logger.Log(LogLevel.Debug, "Null arguments", new object[0]);
+        }
     }
 }

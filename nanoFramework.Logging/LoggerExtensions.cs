@@ -412,7 +412,7 @@ namespace Microsoft.Extensions.Logging
 
             //Enable writing unformated string as logmessage (for example json without any params args)
             string formatedMessage = message;
-            if (args.Length > 0)
+            if ((args != null) && (args.Length > 0))
             {
                 formatedMessage = string.Format(message, args);
             }
