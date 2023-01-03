@@ -114,7 +114,7 @@ namespace UnitTestDebugLogging
         /// Logging a json formatted string.
         /// </summary>
         [TestMethod]
-        public void LogJsonStringWitoutParams()
+        public void LogJsonStringWithoutParams()
         {
             _logger.LogInformation(@"{ ""Message"":""nanoframework"" }");
         }
@@ -123,7 +123,7 @@ namespace UnitTestDebugLogging
         /// Logging with null params.
         /// </summary>
         [TestMethod]
-        public void LogNullArgumentExtensioon()
+        public void LogNullArgumentExtension()
         {
             _logger.Log(LogLevel.Debug, "Null arguments", null);
         }
@@ -132,7 +132,7 @@ namespace UnitTestDebugLogging
         /// Logging with empty params.
         /// </summary>
         [TestMethod]
-        public void LogEmptyArgumentExtensioon()
+        public void LogEmptyArgumentExtension()
         {
             _logger.Log(LogLevel.Debug, "Null arguments", new object[0]);
         }
