@@ -20,15 +20,15 @@ namespace Microsoft.Extensions.Logging
 
         #region Debug
 
-            /// <summary>
-            /// Formats and writes a debug log message.
-            /// </summary>
-            /// <param name="logger">The <see cref="ILogger"/> to write to.</param>
-            /// <param name="eventId">The event id associated with the log.</param>
-            /// <param name="exception">The exception to log.</param>
-            /// <param name="message">Format string of the log message in message template format. Example: <code>"User {User} logged in from {Address}"</code></param>
-            /// <param name="args">An object array that contains zero or more objects to format.</param>
-            /// <example>logger.LogDebug(0, exception, "Error while processing request from {Address}", address)</example>
+        /// <summary>
+        /// Formats and writes a debug log message.
+        /// </summary>
+        /// <param name="logger">The <see cref="ILogger"/> to write to.</param>
+        /// <param name="eventId">The event id associated with the log.</param>
+        /// <param name="exception">The exception to log.</param>
+        /// <param name="message">Format string of the log message in message template format. Example: <code>"User {User} logged in from {Address}"</code></param>
+        /// <param name="args">An object array that contains zero or more objects to format.</param>
+        /// <example>logger.LogDebug(0, exception, "Error while processing request from {Address}", address)</example>
         public static void LogDebug(this ILogger logger, EventId eventId, Exception exception, string message, params object[] args)
         {
             logger.Log(LogLevel.Debug, eventId, exception, message, args);
@@ -410,7 +410,14 @@ namespace Microsoft.Extensions.Logging
                 throw new ArgumentNullException(nameof(logger));
             }
 
-            logger.Log(logLevel, eventId, string.Format(message, args), exception, MessageFormatter);
+            //Enable writing unformated string as logmessage (for example json without any params args)
+            string formatedMessage = message;
+            if ((args != null) && (args.Length > 0))
+            {
+                formatedMessage = string.Format(message, args);
+            }
+
+            logger.Log(logLevel, eventId, formatedMessage, exception, MessageFormatter);
         }
 
         #endregion

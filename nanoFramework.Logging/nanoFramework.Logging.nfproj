@@ -47,9 +47,11 @@
     <None Include="key.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="mscorlib, Version=1.14.3.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+    <Content Include="packages.lock.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib">
       <HintPath>..\packages\nanoFramework.CoreLibrary.1.14.2\lib\mscorlib.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />
