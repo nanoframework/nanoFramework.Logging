@@ -2,7 +2,19 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Logging/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.58...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.60...HEAD)
+
+**Fixed bugs:**
+
+- Enable writing json format string as logmessage [\#184](https://github.com/nanoframework/nanoFramework.Logging/pull/184)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#198](https://github.com/nanoframework/nanoFramework.Logging/pull/198)
+
+## [v1.1.60](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.1.60) (2022-12-28)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.58...v1.1.60)
 
 **Documentation and other chores:**
 
