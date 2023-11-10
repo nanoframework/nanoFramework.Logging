@@ -2,7 +2,23 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoFramework.Logging/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.60...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.63...HEAD)
+
+**Documentation and other chores:**
+
+- Update 11 NuGet dependencies [\#213](https://github.com/nanoframework/nanoFramework.Logging/pull/213)
+- Update 1 NuGet dependencies [\#207](https://github.com/nanoframework/nanoFramework.Logging/pull/207)
+- Update 2 NuGet dependencies [\#206](https://github.com/nanoframework/nanoFramework.Logging/pull/206)
+- Update 1 NuGet dependencies [\#205](https://github.com/nanoframework/nanoFramework.Logging/pull/205)
+- Update 2 NuGet dependencies [\#204](https://github.com/nanoframework/nanoFramework.Logging/pull/204)
+- Update 1 NuGet dependencies [\#202](https://github.com/nanoframework/nanoFramework.Logging/pull/202)
+- Update 1 NuGet dependencies [\#201](https://github.com/nanoframework/nanoFramework.Logging/pull/201)
+- Update 1 NuGet dependencies [\#200](https://github.com/nanoframework/nanoFramework.Logging/pull/200)
+- Update 1 NuGet dependencies [\#199](https://github.com/nanoframework/nanoFramework.Logging/pull/199)
+
+## [v1.1.63](https://github.com/nanoframework/nanoFramework.Logging/tree/v1.1.63) (2023-01-04)
+
+[Full Changelog](https://github.com/nanoframework/nanoFramework.Logging/compare/v1.1.60...v1.1.63)
 
 **Fixed bugs:**
 
