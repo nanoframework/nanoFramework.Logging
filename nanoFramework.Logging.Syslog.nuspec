@@ -19,8 +19,8 @@
 There is also a package with the Serial Logging, another with Stream Logging only and another with the basic Debug Logging.</description>
     <tags>nanoFramework C# csharp netmf netnf logger Syslog</tags>
     <dependencies>
-      <dependency id="nanoFramework.CoreLibrary" version="1.15.5" />
-      <dependency id="nanoFramework.Runtime.Events" version="1.11.18" />
+      <dependency id="nanoFramework.CoreLibrary" version="1.16.1" />
+      <dependency id="nanoFramework.Runtime.Events" version="1.11.26" />
       <dependency id="nanoFramework.System.IO.Streams" version="1.1.77" />
       <dependency id="nanoFramework.System.Net" version="1.11.17" />
       <dependency id="nanoFramework.Logging" version="$version$" />
