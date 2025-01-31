@@ -4,11 +4,9 @@
 //
 
 using Microsoft.Extensions.Logging;
-using nanoFramework.Logging;
 using nanoFramework.Logging.Debug;
 using nanoFramework.TestFramework;
 using System;
-using System.Diagnostics;
 
 namespace UnitTestDebugLogging
 {
