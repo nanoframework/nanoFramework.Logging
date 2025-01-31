@@ -7,7 +7,6 @@ using nanoFramework.Logging;
 using nanoFramework.Logging.Serial;
 using nanoFramework.TestFramework;
 using System;
-using System.IO.Ports;
 #if BUIID_FOR_ESP32
 using nanoFramework.Hardware.Esp32;
 #endif
