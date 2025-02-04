@@ -22,9 +22,9 @@
       },
       "nanoFramework.System.Net": {
         "type": "Direct",
-        "requested": "[1.11.25, 1.11.25]",
-        "resolved": "1.11.25",
-        "contentHash": "PH9ayGXfpY9gykuyXPoMzxy7Y72NOWuQO5sWFcFDiT1cJIVyoeVGCezoEHSlC/X6Bf1vYwBtBwOfkwf5qxkS1Q=="
+        "requested": "[1.11.26, 1.11.26]",
+        "resolved": "1.11.26",
+        "contentHash": "r3hwwHHbUZF201IuhMrnvAjJwHBRlhMb67uE9RHZYRkA6LD2uQKPmV/porkHEiBODwgm8+dUWX4N6W5cBffbQw=="
       },
       "nanoFramework.System.Text": {
         "type": "Direct",
