@@ -22,9 +22,9 @@
       },
       "nanoFramework.System.IO.Ports": {
         "type": "Direct",
-        "requested": "[1.1.130, 1.1.130]",
-        "resolved": "1.1.130",
-        "contentHash": "rhaT/8DHEi0hYQxd+9PrACq2mEC3euKOeqBRalxq+DcU0oEuEsDXuEUL38h/W6wbFxQ4Zp8N1n0cADIz0OJqEQ=="
+        "requested": "[1.1.131, 1.1.131]",
+        "resolved": "1.1.131",
+        "contentHash": "xOdwmVoRxoZkadFDeCIjsafNIZiAL7YXpDEJmjrDtyXFKGASMUA2yS5g4XqH6kD8Qa3jn1eslb5mk4esrqeujQ=="
       },
       "nanoFramework.System.IO.Streams": {
         "type": "Direct",
