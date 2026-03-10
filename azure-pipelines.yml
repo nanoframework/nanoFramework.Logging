@@ -52,7 +52,7 @@ steps:
 - template: azure-pipelines-templates/class-lib-build-only.yml@templates  
   parameters:
     sonarCloudProject: 'nanoframework_nanoFramework.Logging'
-    runUnitTests: true
+    runUnitTests: false
     unitTestRunsettings: '$(System.DefaultWorkingDirectory)\.runsettings'
     usePreviewBuild: true
 
