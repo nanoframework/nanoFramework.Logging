@@ -21,7 +21,7 @@ These are meant to be used when you want to use those possibilities.</descriptio
     <tags>nanoFramework C# csharp netmf netnf logger</tags>
     <dependencies>
       <group targetFramework=".NETnanoFramework1.0">
-        <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.39" />
+        <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.43" />
       </group>
     </dependencies>
   </metadata>
